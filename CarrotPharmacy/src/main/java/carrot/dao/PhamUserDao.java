@@ -5,7 +5,6 @@ import static carrot.common.jdbc.JDBCTemplate.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
 import carrot.vo.PhamUser;
 
@@ -36,48 +35,6 @@ public class PhamUserDao {
 			close(rs);
 		}
 		return user;
-	}
-
-	public int insertMember(Connection connection, PhamUser user) {
-		int result = 0;
-		PreparedStatement pstmt = null;
-		String query = "INSERT INTO PHAM_USER VALUES(?, ?, ?)";
-		try {
-			pstmt = connection.prepareStatement(query);
-			pstmt.setString(1, user.getPham_id());
-			pstmt.setString(2, user.getPham_no());
-			pstmt.setString(3, user.getPham_user_pw());
-			
-			result = pstmt.executeUpdate();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			close(pstmt);
-		}
-		return result;
-	}
-
-	public int updateMember(Connection connection, PhamUser user) {
-		int result = 0;
-		PreparedStatement pstmt = null;
-		String query = null;
-		
-		try {
-			query = "UPDATE MEMBER SET PHAM_NO=?,PHAM_USER_PW=? WHERE PHAM_USER_ID=?";
-			pstmt = connection.prepareStatement(query);
-			
-			pstmt.setString(1, user.getPham_no());
-			pstmt.setString(2, user.getPham_user_pw());
-			pstmt.setString(3, user.getPham_id());
-			
-			result = pstmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(pstmt);
-		}
-		
-		return result;
 	}
 	
 }

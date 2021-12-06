@@ -29,24 +29,4 @@ public class PhamUserService {
 		return user;
 	}
 
-	public int save(PhamUser user) {
-		int result = 0;
-		Connection connection = getConnection();
-		
-		if(user.getPham_no() != null) {
-			result = pud.updateMember(connection, user);
-		}else {
-			result = pud.insertMember(connection, user);
-		}
-		
-		if(result > 0) {
-			commit(connection);
-		}else {
-			rollback(connection);
-		}
-		close(connection);
-		
-		return result;
-	}
-
 }

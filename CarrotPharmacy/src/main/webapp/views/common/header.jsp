@@ -15,6 +15,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<header>
+	
 	<div>
 	<%if(loginPham == null){%>
 		<%--일반 로그인 폼 영역 시작--%>
@@ -61,5 +63,4 @@
 		<%--로그인 된 사용자 정보 보여주는 폼 영역 종료--%>
 	<% 	}%>
 	</div>
-</body>
-</html>
+	</header>
