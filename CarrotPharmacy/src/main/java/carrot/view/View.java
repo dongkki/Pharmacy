@@ -35,7 +35,7 @@ public class View {
 //			System.out.println(pbookMark);
 //		}
 		
-		System.out.println("변경?");
+		System.out.println("변경 후");
 	}
 
 }
