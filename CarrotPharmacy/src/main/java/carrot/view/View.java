@@ -34,7 +34,7 @@ public class View {
 //		for (PBookMark pbookMark : list3) {
 //			System.out.println(pbookMark);
 //		}
-		System.out.println("왜 안나오지");
+		System.out.println("왜 안나와..");
 	}
 
 }
