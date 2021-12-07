@@ -34,7 +34,7 @@ public class SearchpPam extends HttpServlet {
 		String name = req.getParameter("search_box");
 		String address = req.getParameter("address");
 		System.out.println(name+","+address);
-		//사용자가 입력한 데이터 가져옴
+		//사용자가 입력한 데이터 가져옴()
 		ArrayList<Pharmacy> pham = service.findPharmacyByName(name);
 		
 		req.setAttribute("pham", pham);
