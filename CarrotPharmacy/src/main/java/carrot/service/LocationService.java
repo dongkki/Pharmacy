@@ -10,7 +10,7 @@ import carrot.vo.Location;
 
 public class LocationService {
 	
-	private LocationDao ld = null;
+	private LocationDao dao = null;
 	private Connection conn = null;
 	
 	public LocationService() {
@@ -22,12 +22,12 @@ public class LocationService {
 			close(conn);
 		}
 		conn = getConnection();
-		ld = new LocationDao(conn);
+		dao = new LocationDao(conn);
 	}
 
 	public List<Location> selectAll(){
-		ld.setConn(conn);
-		return ld.locationSelect();
+		dao.setConn(conn);
+		return dao.locationSelect();
 	}
 	
 }

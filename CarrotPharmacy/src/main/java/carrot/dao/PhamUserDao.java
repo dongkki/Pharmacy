@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+
 import carrot.vo.PhamUser;
 
 public class PhamUserDao {
@@ -35,6 +36,25 @@ public class PhamUserDao {
 			close(rs);
 		}
 		return user;
+	}
+	
+	public int insertUser(Connection connection, PhamUser user) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String query = "INSERT INTO PHAM_USER VALUES(?,?,?)";
+		try {
+			pstmt = connection.prepareStatement(query);
+			pstmt.setString(1, user.getPham_id());
+			pstmt.setString(2, user.getPham_no());
+			pstmt.setString(3, user.getPham_user_pw());
+			
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
 	}
 	
 }

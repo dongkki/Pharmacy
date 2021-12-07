@@ -6,9 +6,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/resource/css/style.css" >
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/resource/css/style.css" >
     <script src="https://kit.fontawesome.com/49fd011980.js" crossorigin="anonymous"></script>
-    <script src="/resource/js/theme.min.js"></script>
+    <script src="<%=request.getContextPath() %>/resource/js/theme.min.js"></script>
     <title>당근약국 - 메인</title>
     
     <!-- Favicons -->
@@ -34,7 +34,7 @@
                 <nav class="navbar navbar-expand-md" aria-label="Fourth navbar example">
                     <div class="container-fluid">
                         <!-- 로고이미지, 타이틀 -->
-                        <img class="carrot" src="resource/img/carrot.png" alt="">
+                        <img class="carrot" src="<%=request.getContextPath() %>/resource/img/carrot.png" alt="">
                         <a class="navbar-brand" href="#">당근약국</a>
                         <!-- 토글 -->
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
@@ -66,7 +66,7 @@
                             <div class="col-md-3 text-end">
                             	<% if(loginPham == null){ %>
                                 	<a href="<%=request.getContextPath() %>/views/user/login.jsp"><button type="button" class="btn btn-outline-primary me-2">로그인</button></a>
-                                	<a href=""> <button type="button" class="btn btn-primary">회원가입</button></a>
+                                	<a href="<%=request.getContextPath() %>/views/user/enroll.jsp"> <button type="button" class="btn btn-primary">회원가입</button></a>
                                 <% } else { %>
                                 	<table>
                                 		<tr>
@@ -88,6 +88,6 @@
                     </div> <!-- container-fluid -->
                 </nav> <!-- nav -->
             </header> <!-- header -->
-        </div> <!-- container -->
-    </div>
+         </div> <!-- container -->
+    	</div>
     

@@ -10,7 +10,7 @@ import carrot.vo.PhamUser;
 
 public class PhamUserService {
 
-	private PhamUserDao pud = new PhamUserDao();
+	private PhamUserDao dao = new PhamUserDao();
 
 	public PhamUser login(String id, String pwd) {
 		PhamUser user = fineUserId(id);
@@ -24,9 +24,24 @@ public class PhamUserService {
 	
 	public PhamUser fineUserId(String id) {
 		Connection connection = getConnection();
-		PhamUser user = pud.fineUserId(connection, id);
+		PhamUser user = dao.fineUserId(connection, id);
 		close(connection);
 		return user;
-	}
+	}  
 
+	public int enrollPham(PhamUser user) {
+		int result = 0;
+		Connection connection = getConnection();
+		
+		result = dao.insertUser(connection, user);
+		
+		if(result > 0) {
+			commit(connection);
+		}else {
+			rollback(connection);
+		}
+		close(connection);
+		
+		return result;
+	}
 }

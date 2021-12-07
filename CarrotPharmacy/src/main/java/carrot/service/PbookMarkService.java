@@ -10,7 +10,7 @@ import carrot.vo.PBookMark;
 
 public class PbookMarkService {
 	
-	private PbookMarkDao pmd = null;
+	private PbookMarkDao dao = null;
 	private Connection conn = null;
 	
 	public PbookMarkService() {
@@ -22,12 +22,12 @@ public class PbookMarkService {
 			close(conn);
 		}
 		conn = getConnection();
-		pmd = new PbookMarkDao(conn);
+		dao = new PbookMarkDao(conn);
 	}
 
 	public List<PBookMark> selectAll(){
-		pmd.setConn(conn);
-		return pmd.selectPbook();
+		dao.setConn(conn);
+		return dao.selectPbook();
 	}
 	
 }
