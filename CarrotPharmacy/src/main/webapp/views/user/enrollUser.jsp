@@ -30,7 +30,7 @@
         
         <section id="content">
             <h3 align="center">회원 가입 정보</h3>
-			<table style="margin-left: auto; margin-right: auto;">
+            <table style="margin-left: auto; margin-right: auto;">
 				<tr>
 					<td>
 						<a href="<%=request.getContextPath() %>/views/user/enrollUser.jsp"><button type="button" class="btn btn-outline-primary me-2">일반 회원</button></a>
@@ -39,7 +39,7 @@
 				</tr>
 			</table>
             <div id="enroll-container">
-                <form name="memberEnrollFrm" action="<%= request.getContextPath() %>/enroll" method="POST">
+                <form name="memberEnrollFrm" action="<%= request.getContextPath() %>/enrollUser" method="POST">
                     <table>
                         <tr>
                             <th>아이디</th>
@@ -58,8 +58,12 @@
                             <td><input type="password" id="pass2" /></td>
                         </tr>
                         <tr>
-                            <th>약국번호</th>
-                            <td><input type="text" name="phamNo" required /></td>
+                            <th>이름</th>
+                            <td><input type="text" name="userName" required /></td>
+                        </tr>
+                        <tr>
+                            <th>전화번호</th>
+                            <td><input type="text" name="userTel" required /></td>
                         </tr>
                     </table>
 

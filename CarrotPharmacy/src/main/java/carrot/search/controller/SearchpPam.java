@@ -1,4 +1,4 @@
-package carrot.select.controller;
+package carrot.search.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;

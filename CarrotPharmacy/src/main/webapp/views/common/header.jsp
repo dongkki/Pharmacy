@@ -1,3 +1,4 @@
+<%@page import="carrot.vo.Users"%>
 <%@page import="carrot.vo.PhamUser"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -23,6 +24,7 @@
 
 <%
 	PhamUser loginPham = (PhamUser)session.getAttribute("loginPham");
+	Users loginUser = (Users)session.getAttribute("loginUser");
 %>
 
 <body>
@@ -64,13 +66,27 @@
                             </ul>
                             <!-- 로그인, 회원가입 -->
                             <div class="col-md-3 text-end">
-                            	<% if(loginPham == null){ %>
-                                	<a href="<%=request.getContextPath() %>/views/user/login.jsp"><button type="button" class="btn btn-outline-primary me-2">로그인</button></a>
-                                	<a href="<%=request.getContextPath() %>/views/user/enroll.jsp"> <button type="button" class="btn btn-primary">회원가입</button></a>
-                                <% } else { %>
+                            	<% if((loginPham == null) && (loginUser == null)){ %>
+                                	<a href="<%=request.getContextPath() %>/views/user/loginUser.jsp"><button type="button" class="btn btn-outline-primary me-2">로그인</button></a>
+                                	<a href="<%=request.getContextPath() %>/views/user/enrollUser.jsp"> <button type="button" class="btn btn-primary">회원가입</button></a>
+                                <% } else if (loginPham != null){ %>
                                 	<table>
                                 		<tr>
                                 			<td colspan="2"><%=loginPham.getPham_id() %> 님 환영합니다</td>
+                                		</tr>
+                                		<tr>
+                                			<td>
+			                                	<a href=""> <button type="button" class="btn btn-primary">내정보</button></a>
+                                			</td>
+                                			<td>
+			                                	<a href="<%=request.getContextPath() %>/logoutPham"><button type="button" class="btn btn-outline-primary me-2">로그아웃</button></a>
+                                			</td>
+                                		</tr>
+                                	</table>
+                                <% } else {%>
+                                	<table>
+                                		<tr>
+                                			<td colspan="2"><%=loginUser.getUser_name() %> 님 환영합니다</td>
                                 		</tr>
                                 		<tr>
                                 			<td>

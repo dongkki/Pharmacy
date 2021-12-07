@@ -9,7 +9,7 @@ import carrot.vo.Users;
 
 public class UsersDao {
 	
-	public Users findUserById(Connection connection, String id) {
+	public Users findUserId(Connection connection, String id) {
 		Users users = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -36,6 +36,7 @@ public class UsersDao {
 		}
 		return users;
 	}
+	
 	public int insertUser(Connection connection, Users user) {
 		int result =0;
 		PreparedStatement pstmt = null;
@@ -72,6 +73,7 @@ public class UsersDao {
 		}
 		return result;
 	}
+	
 	public int deleteUser(Connection connection,String id) {
 		int result = 0;
 		PreparedStatement pstmt = null;

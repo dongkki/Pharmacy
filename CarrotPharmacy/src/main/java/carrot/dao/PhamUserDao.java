@@ -13,7 +13,6 @@ public class PhamUserDao {
 	
 	public PhamUser fineUserId(Connection conn, String id) {
 		PhamUser user = null;
-		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String query = "SELECT * FROM PHAM_USER WHERE PHAM_USER_ID=?";
