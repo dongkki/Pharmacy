@@ -20,8 +20,8 @@ public class PhamUserLogin extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String id = req.getParameter("userId");
-		String pw = req.getParameter("userPwd");
+		String id = req.getParameter("id");
+		String pw = req.getParameter("pw");
 		
 		System.out.println(id + " " + pw);
 		
@@ -31,12 +31,12 @@ public class PhamUserLogin extends HttpServlet{
 			HttpSession session = req.getSession();
 			session.setAttribute("loginPham", loginPham);
 
-			resp.sendRedirect(req.getContextPath() + "/"); // 메인 페이지로 이동
+			resp.sendRedirect(req.getContextPath() + "/views/index.jsp"); // 메인 페이지로 이동
 		} else { // 로그인 실패!!
 			req.setAttribute("msg", "사용자 아이디나 비밀번호가 맞지 않습니다!");
-			req.setAttribute("location", "/");
+			req.setAttribute("location", "/views/index.jsp");
 
-//			req.getRequestDispatcher("/views/common/msg.jsp").forward(req, resp);
+			req.getRequestDispatcher("/views/common/msg.jsp").forward(req, resp);
 		}
 	}
 

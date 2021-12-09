@@ -4,7 +4,7 @@
 
 <%@ page import="carrot.vo.Pharmacy"%>
 <%@ page import="java.util.*"%>
-<%@ include file="/views/common/header.jsp"%>
+<%@ include file="/views/header.jsp"%>
 <%
 //	String no = (String)request.getAttribute("phamNo");
 //	String name = (String)request.getAttribute("phamName");
@@ -55,6 +55,7 @@
 				<h3> 검색결과 </h3>
 				<tr>
 			 	<% if(pham == null || pham.isEmpty()){%>
+				</tr>
 				<tr>
 				<td colspan="6">
 					조회된 약국이 없습니다.
@@ -67,13 +68,12 @@
 						<div><%= phams.getPham_name() %></div>
 						<div><%= phams.getPham_no() %></div>
 						<div><%= phams.getPham_tell() %></div>
-						<br>
 					</tr>
 					<% } %>
 				<%}%>
 			
-			</tr>
+				</tr>
 			</table>
 </section>
 
-<%@ include file="/views/common/footer.jsp"%>
+<%@ include file="/views/footer.jsp"%>

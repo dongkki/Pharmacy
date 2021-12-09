@@ -27,8 +27,8 @@ public class PhamUserEnroll extends HttpServlet{
 		PhamUser user = new PhamUser();
 		
 		try { 
-			user.setPham_id(req.getParameter("userId"));
-			user.setPham_user_pw(req.getParameter("userPwd"));
+			user.setPham_id(req.getParameter("id"));
+			user.setPham_user_pw(req.getParameter("pw"));
 			user.setPham_no(req.getParameter("phamNo"));
 			
 			System.out.println(user.toString());
@@ -44,7 +44,7 @@ public class PhamUserEnroll extends HttpServlet{
 		
 		if(result > 0) {
 			req.setAttribute("msg", "회원가입 성공!");
-			req.setAttribute("location", "/");
+			req.setAttribute("location", "/views/index.jsp");
 		}else {
 			req.setAttribute("msg", "회원가입 실패!");
 			req.setAttribute("location", "/user/enroll.jsp");

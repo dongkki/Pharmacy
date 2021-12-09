@@ -1,32 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%@ include file="/views/common/header.jsp"%>
+<%@ include file="/views/header.jsp"%>
 
-<section id="content">
-	<div class="header_login">
-			<table>
-				<tr>
-					<td>
-						<a href="<%=request.getContextPath() %>/views/user/loginUser.jsp"><button type="button" class="btn btn-outline-primary me-2">일반 회원 로그인</button></a>
-						<a href="<%=request.getContextPath() %>/views/user/login.jsp"><button type="button" class="btn btn-outline-primary me-2">약국 회원 로그인</button></a>
-					</td>
-				</tr>
-			</table>
+<section class="login">
+			<div class="login_membertype">
+					<a href="<%=request.getContextPath() %>/views/user/loginUser.jsp"><button type="button" class="btn btn-outline-primary me-2">일반 회원</button></a>
+					<a href="<%=request.getContextPath() %>/views/user/login.jsp"><button type="button" class="btn btn-outline-primary me-2">약국 회원</button></a>
+			</div>
 			<% if(loginUser == null) { %>
 			<%--일반 로그인 폼 영역 시작--%>
-			<form id="loginFrm"	action="<%=request.getContextPath()%>/userlogin" method="post">
-				<table>
-					<tr>
-						<td><input type="text" name="userId" id="userId" placeholder="아이디" required="required"></td>
-					</tr>
-					<tr>
-						<td><input type="password" name="userPwd" id="userPwd" placeholder="비밀번호" required="required"></td>
-					</tr>
-					<tr>
-						<td><input type="submit" value="로그인"></td>
-					</tr>
-				</table>
+			<form id="loginFrm" action="<%=request.getContextPath()%>/userlogin" method="post">
+				<div class="login_input">
+					<input type="text" name="id" id="id" autocomplete="off" required placeholder="ID">
+					<div class="password-toggle"> <input class="form-control" type="password" name="pw" id="pw" required placeholder="Password"> </div>
+					<div class="login_btn" style="text-align: center;">
+                    <button type="submit">로그인</button>
+               		</div>
+				</div>
 			</form>
 			<%--일반 로그인 폼 영역 종료--%>
 			<% } else { %>
@@ -37,15 +28,15 @@
 				</tr>
 				<tr>
 					<td>
-						<button	onclick="location.href = '<%=request.getContextPath()%>/member/view';">내정보</button>
+						<button	onclick="location.href = '<%=request.getContextPath()%>/member/view';">Info</button>
 					</td>
 					<td>
-						<button	onclick="location.replace('<%=request.getContextPath()%>/logoutUser')">로그아웃</button>
+						<button	onclick="location.replace('<%=request.getContextPath()%>/logoutUser')">Logout</button>
 					</td>
 				</tr>
 			</table>
 			<%--로그인 된 사용자 정보 보여주는 폼 영역 종료--%>
 			<% } %>
-	</div>
 </section>
-<%@ include file="/views/common/footer.jsp"%>
+
+<%@ include file="/views/footer.jsp"%>

@@ -5,6 +5,7 @@ import static carrot.common.jdbc.JDBCTemplate.*;
 import java.sql.Connection;
 
 import carrot.dao.UsersDao;
+import carrot.vo.PhamUser;
 import carrot.vo.Users;
 
 public class UserService {
@@ -42,5 +43,17 @@ public class UserService {
 		close(connection);
 		
 		return result;
+	}
+	
+	public boolean isDuplicated(String id) {
+		Connection conn = getConnection();
+		Users member = dao.findUserId(conn, id);
+		close(conn);
+
+		if (member != null) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 }

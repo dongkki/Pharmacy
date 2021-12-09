@@ -21,7 +21,7 @@ public class PhamUserLogout extends HttpServlet{
 			session.invalidate();
 		}
 		
-		resp.sendRedirect(req.getContextPath() + "/");
+		resp.sendRedirect(req.getContextPath() + "/views/index.jsp");
 	}
 	
 	@Override
