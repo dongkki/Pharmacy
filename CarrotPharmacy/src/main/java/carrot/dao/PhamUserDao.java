@@ -37,6 +37,32 @@ public class PhamUserDao {
 		return user;
 	}
 	
+	public PhamUser finePhamNo(Connection conn, String no) {
+		PhamUser user = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String query = "SELECT * FROM PHAM_USER WHERE PHAM_NO=?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, no);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next() == true) {
+				user = new PhamUser();
+				user.setPham_id(rs.getString("PHAM_USER_ID"));
+				user.setPham_no(rs.getString("PHAM_NO"));
+				user.setPham_user_pw(rs.getString("PHAM_USER_PW"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rs);
+		}
+		return user;
+	}
+	
 	public int insertUser(Connection connection, PhamUser user) {
 		int result = 0;
 		PreparedStatement pstmt = null;

@@ -1,4 +1,4 @@
-package carrot.users.controller;
+package carrot.phamuser.controller;
 
 import java.io.IOException;
 
@@ -8,19 +8,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import carrot.service.UserService;
+import carrot.service.PhamUserService;
 
-@WebServlet("/user/checkId")
-public class UserCheckId extends HttpServlet{
-	private static final long serialVersionUID = 1L;
+
+@WebServlet("/user/checkNo")
+public class PhamUserCheckNo extends HttpServlet{
+private static final long serialVersionUID = 1L;
 	
-	UserService service = new UserService();
+	PhamUserService service = new PhamUserService();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String id = req.getParameter("id");
+		String phamNo = req.getParameter("phamNo");
 	
-		boolean isDupl = service.isDuplicated(id);
+		boolean isDupl = service.isDuplicated(phamNo);
 		
 		if (isDupl == true) {
 			// 중복

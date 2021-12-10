@@ -22,6 +22,10 @@
     
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="<%=request.getContextPath() %>/views/css/theme.min.css">
+    
+	<!-- jquery -->
+    <script src="<%= request.getContextPath() %>/views/js/jquery-3.6.0.min.js"></script>
+    
 </head>
 <!-- Body-->
 
@@ -40,8 +44,10 @@
                     <a class="navbar-brand d-none d-sm-block me-4 order-lg-1" href="<%=request.getContextPath() %>/views/index.jsp"><img src="<%=request.getContextPath() %>\views\img\logo_carrot_pharm.png" width="150" alt="Carrot"></a>
                     <div class="navbar-toolbar d-flex align-items-center order-lg-3">
                         <% if((loginPham == null) && (loginUser == null)){ %>
-                                <a href="<%=request.getContextPath() %>/views/user/loginUser.jsp"><button type="button" class="btn btn-outline-primary me-2">Login</button></a>
-                                <a href="<%=request.getContextPath() %>/views/user/enrollUser.jsp"> <button type="button" class="btn btn-primary">Enroll</button></a>
+                                <a class="btn btn-outline-primary btn-shadow mx-2" href="<%=request.getContextPath() %>/views/user/enrollUser.jsp" target="_blank" rel="noopener">
+                                <i class="ci-user-circle me-2"></i>Sign-up</a>
+                                <a class="btn btn-primary btn-shadow mx-2" href="<%=request.getContextPath() %>/views/user/loginUser.jsp" target="_blank" rel="noopener">
+                                <i class="ci-user-circle me-2"></i>Log-in</a>
                             <% } else if (loginPham != null){ %>
                                 <table>
                                 	<tr>
@@ -49,10 +55,12 @@
                                 	</tr>
                                 	<tr>
                                 		<td>
-			                               	<a href=""> <button type="button" class="btn btn-primary">내정보</button></a>
+			                               	<a class="btn btn-primary btn-shadow mx-2" href=""> 
+			                               	<i class="ci-user-circle me-2"></i>Info</a>
                                			</td>
                                			<td>
-			                               	<a href="<%=request.getContextPath() %>/logoutPham"><button type="button" class="btn btn-outline-primary me-2">로그아웃</button></a>
+			                               	<a class="btn btn-outline-primary btn-shadow mx-2" href="<%=request.getContextPath() %>/logoutPham" target="_blank" rel="noopener">
+			                               	<i class="ci-user-circle me-2"></i>Log-out</a>
                                			</td>
                                		</tr>
                                	</table>
@@ -63,10 +71,12 @@
                                		</tr>
                                		<tr>
                                			<td>
-			                               	<a href=""> <button type="button" class="btn btn-primary">내정보</button></a>
+			                               	<a class="btn btn-primary btn-shadow mx-2" href=""> 
+			                               	<i class="ci-user-circle me-2"></i>Info</a>
                                			</td>
                                			<td>
-			                               	<a href="<%=request.getContextPath() %>/logoutPham"><button type="button" class="btn btn-outline-primary me-2">로그아웃</button></a>
+			                               	<a class="btn btn-outline-primary btn-shadow mx-2" href="<%=request.getContextPath() %>/logoutPham" target="_blank" rel="noopener">
+			                               	<i class="ci-user-circle me-2"></i>Log-out</a>
                                			</td>
                                		</tr>
                                	</table>
@@ -75,33 +85,18 @@
                     <div class="collapse navbar-collapse me-auto order-lg-2" id="navbarCollapse">
                         <hr class="my-3">
                         <!-- Primary menu-->
-                        <ul class="navbar-nav">
-                            <li class="nav-item dropdown active"><a class="nav-link" href="<%=request.getContextPath() %>/views/index.jsp">Home</a></li>
-                            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside">약국 검색</a>
-                                <ul class="dropdown-menu">
-                                    <li class="dropdown"><a class="dropdown-item " href="pharm_search.html">약국 검색</a></li>
-                                    <li class="dropdown"><a class="dropdown-item " href="pharm_search.html">24시 약국 검색</a></li>
-                                    <li class="dropdown-divider"></li>
-                                    <li class="dropdown"><a class="dropdown-item " href="pharm_detail.html">약국 상세 페이지</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside">의약품 검색</a>
-                                <ul class="dropdown-menu">
-                                    <li class="dropdown"><a class="dropdown-item " href="drug_search_name.html">의약품 검색</a></li>
-                                    <li class="dropdown"><a class="dropdown-item " href="drug_search_company.html">제조사 검색</a></li>
-                                    <li class="dropdown"><a class="dropdown-item " href="drug_search_shape.html">약 모양으로 검색</a></li>
-                                    <li class="dropdown-divider"></li>
-                                    <li class="dropdown"><a class="dropdown-item " href="drug_detail.html">의약품 상세 페이지</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside">뉴스</a>
+                        <ul class="navbar-nav ">
+                            <li class="nav-item dropdown"><a class="nav-link fs-5 fw-bold" href="<%=request.getContextPath() %>/views/index.jsp">홈</a></li>
+                            <li class="nav-item dropdown"><a class="nav-link fs-5 fw-bold" href="pharm_search.html">약국 검색</a></li>
+                            <li class="nav-item dropdown"><a class="nav-link fs-5 fw-bold" href="drug_search_name.html">의약품 검색</a></li>
+                            <li class="nav-item dropdown"><a class="nav-link fs-5 fw-bold dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside">뉴스</a>
                                 <ul class="dropdown-menu">
                                     <li class="dropdown"><a class="dropdown-item " href="news.html">뉴스</a></li>
                                     <li class="dropdown-divider"></li>
                                     <li class="dropdown"><a class="dropdown-item " href="about.html">About Us</a></li>
                                 </ul>
                             </li>
-                            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside">마이페이지</a>
+                            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle fs-5 fw-bold" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside">마이페이지</a>
                                 <ul class="dropdown-menu">
                                     <li class="dropdown"><a class="dropdown-item " href="<%=request.getContextPath() %>/views/profile/account-profile.jsp">내 정보 수정</a></li>
                                     <li class="dropdown"><a class="dropdown-item " href="<%=request.getContextPath() %>/views/profile/account-wishlist_pharm.jsp">자주 찾는 약국</a></li>

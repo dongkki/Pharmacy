@@ -45,13 +45,12 @@ public class PhamUserService {
 		return result;
 	}
 
-	// id 중복확인
-	public boolean isDuplicated(String id) {
+	public boolean isDuplicated(String no) {
 		Connection conn = getConnection();
-		PhamUser member = dao.fineUserId(conn, id);
+		PhamUser phamNo = dao.finePhamNo(conn, no);
 		close(conn);
 
-		if (member != null) {
+		if (phamNo != null) {
 			return true;
 		} else {
 			return false;

@@ -3,7 +3,7 @@
 
 <%@ include file="/views/header.jsp"%>
 
-<section id="content">
+<section class="login">
 			<div class="login_membertype">
 					<a href="<%=request.getContextPath() %>/views/user/loginUser.jsp"><button type="button" class="btn btn-outline-primary me-2">일반 회원</button></a>
 					<a href="<%=request.getContextPath() %>/views/user/login.jsp"><button type="button" class="btn btn-outline-primary me-2">약국 회원</button></a>

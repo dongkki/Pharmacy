@@ -1,23 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<head>
-    <meta charset="utf-8">
-    <title>당근 약국</title>
-    <!-- SEO Meta Tags-->
-    <meta name="description" content="Cartzilla - Bootstrap E-commerce Template">
-    <meta name="keywords" content="bootstrap, shop, e-commerce, market, modern, responsive,  business, mobile, bootstrap, html5, css3, js, gallery, slider, touch, creative, clean">
-    <meta name="author" content="Createx Studio">
-    
-    <!-- Viewport-->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <!-- Vendor Styles including: Font Icons, Plugins, etc.-->
-    <link rel="stylesheet" media="screen" href="./views/vendor/simplebar/dist/simplebar.min.css" />
-    <link rel="stylesheet" media="screen" href="./views/vendor/tiny-slider/dist/tiny-slider.css" />
-    
-    <!-- Main Theme Styles + Bootstrap-->
-    <link rel="stylesheet" media="screen" href="../css/theme.min.css">
-</head>
 
 	<%@ include file="/views/header.jsp"%>
 	
@@ -60,9 +42,9 @@
                                 <h3 class="fs-sm mb-0 text-muted">메뉴</h3>
                             </div>
                             <ul class="list-unstyled mb-0">
-                                <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="account-profile.html"><i class="ci-user opacity-60 me-2"></i>내정보</a></li>
-                                <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="account-wishlist_drug.html"><i class="ci-heart opacity-60 me-2"></i>즐겨찾기_약<span class="fs-sm text-muted ms-auto">3</span></a></li>
-                                <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="account-wishlist_pharm.html"><i class="ci-heart opacity-60 me-2"></i>즐겨찾기_약국<span class="fs-sm text-muted ms-auto">3</span></a></li>
+                                <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="<%=request.getContextPath() %>/views/profile/account-profile.jsp"><i class="ci-user opacity-60 me-2"></i>내정보</a></li>
+                                <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="<%=request.getContextPath() %>/views/profile/account-wishlist_drug.jsp"><i class="ci-heart opacity-60 me-2"></i>즐겨찾기_약<span class="fs-sm text-muted ms-auto">3</span></a></li>
+                                <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="<%=request.getContextPath() %>/views/profile/account-wishlist_pharm.jsp"><i class="ci-heart opacity-60 me-2"></i>즐겨찾기_약국<span class="fs-sm text-muted ms-auto">3</span></a></li>
                                 <li class="mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="index.html"><i class="ci-sign-out opacity-60 me-2"></i>회원 탈퇴</a></li>
                             </ul>
                         </div>
@@ -78,7 +60,7 @@
                     <!-- Item-->
                     <div class="d-sm-flex justify-content-between mt-lg-4 mb-4 pb-3 pb-sm-2 border-bottom">
                         <div class="d-block d-sm-flex align-items-start text-center text-sm-start">
-                            <a class="d-block flex-shrink-0 mx-auto me-sm-4" href="drug_detail.html" style="width: 10rem;"><img src="img\mypage\그날엔정.jpg" alt="Product"></a>
+                            <a class="d-block flex-shrink-0 mx-auto me-sm-4" href="drug_detail.html" style="width: 10rem;"><img src="<%=request.getContextPath() %>\views\img\mypage\그날엔정.jpg" alt="Product"></a>
                             <div class="pt-2">
                                 <h3 class="product-title fs-base mb-2"><a href="drug_detail.html">그날엔정</a></h3>
                                 <div class="fs-sm"><span class="text-muted me-2">제조사:</span>경동제약(주)</div>
@@ -94,7 +76,7 @@
                     <!-- Item-->
                     <div class="d-sm-flex justify-content-between my-4 pb-3 pb-sm-2 border-bottom">
                         <div class="d-block d-sm-flex align-items-start text-center text-sm-start">
-                            <a class="d-block flex-shrink-0 mx-auto me-sm-4" href="drug_detail.html" style="width: 10rem;"><img src="img\mypage\모드코에스연질캡슐.jpg" alt="Product"></a>
+                            <a class="d-block flex-shrink-0 mx-auto me-sm-4" href="drug_detail.html" style="width: 10rem;"><img src="<%=request.getContextPath() %>\views\img\mypage\모드코에스연질캡슐.jpg" alt="Product"></a>
                             <div class="pt-2">
                                 <h3 class="product-title fs-base mb-2"><a href="drug_detail.html">모드코에스연질캡슐</a></h3>
                                 <div class="fs-sm"><span class="text-muted me-2">제조사:</span>(주)종근당</div>
@@ -109,7 +91,7 @@
                     <!-- Item-->
                     <div class="d-sm-flex justify-content-between my-4 pb-3 pb-sm-2 border-bottom">
                         <div class="d-block d-sm-flex align-items-start text-center text-sm-start">
-                            <a class="d-block flex-shrink-0 mx-auto me-sm-4" href="drug_detail.html" style="width: 10rem;"><img src="img\mypage\큐시드정.jpg" alt="Product"></a>
+                            <a class="d-block flex-shrink-0 mx-auto me-sm-4" href="drug_detail.html" style="width: 10rem;"><img src="<%=request.getContextPath() %>\views\img\mypage\큐시드정.jpg" alt="Product"></a>
                             <div class="pt-2">
                                 <h3 class="product-title fs-base mb-2"><a href="drug_detail.html">큐시드정</a></h3>
                                 <div class="fs-sm"><span class="text-muted me-2">제조사:</span>(주)유한양행</div>
@@ -124,7 +106,7 @@
                     <!-- Item-->
                     <div class="d-sm-flex justify-content-between my-4 pb-3 pb-sm-2 border-bottom">
                         <div class="d-block d-sm-flex align-items-start text-center text-sm-start">
-                            <a class="d-block flex-shrink-0 mx-auto me-sm-4" href="drug_detail.html" style="width: 10rem;"><img src="img\mypage\코메키나.jpg" alt="Product"></a>
+                            <a class="d-block flex-shrink-0 mx-auto me-sm-4" href="drug_detail.html" style="width: 10rem;"><img src="<%=request.getContextPath() %>\views\img\mypage\코메키나.jpg" alt="Product"></a>
                             <div class="pt-2">
                                 <h3 class="product-title fs-base mb-2"><a href="drug_detail.html">코메키나캡슐</a></h3>
                                 <div class="fs-sm"><span class="text-muted me-2">제조사:</span>(주)대웅제약</div>
