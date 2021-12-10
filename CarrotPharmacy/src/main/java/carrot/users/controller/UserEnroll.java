@@ -43,7 +43,7 @@ public class UserEnroll extends HttpServlet{
     		return;
 		}
 		
-		int result = service.enrollUser(user);
+		int result = service.saveUser(user);
 		
 		if(result > 0) {
 			req.setAttribute("msg", "회원가입 성공!");

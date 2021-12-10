@@ -28,11 +28,15 @@ public class UserService {
 		return user;
 	}  
 
-	public int enrollUser(Users user) {
+	public int saveUser(Users user) {
 		int result = 0;
 		Connection connection = getConnection();
 		
-		result = dao.insertUser(connection, user);
+		if(user.getUser_id() != "") {
+			result = dao.updateUser(connection, user);
+		}else {
+			result = dao.insertUser(connection, user);
+		}
 		
 		if(result > 0) {
 			commit(connection);
@@ -55,4 +59,13 @@ public class UserService {
 			return false;
 		}
 	}
+
 }
+
+
+
+
+
+
+
+

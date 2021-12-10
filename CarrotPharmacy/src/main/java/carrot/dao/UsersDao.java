@@ -1,9 +1,11 @@
 package carrot.dao;
 
 import static carrot.common.jdbc.JDBCTemplate.*;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import carrot.vo.Users;
 
@@ -56,19 +58,23 @@ public class UsersDao {
 		return result;
 	}
 
-	public int updatePassword(Connection connection, String id, String password ) {
+	public int updateUser(Connection connection, Users user) {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		String query = null;
 		try {
-			query = "UPDATE USERS SET USER_PW=? WHERE USER_ID=?";
+			query = "UPDATE USERS SET USER_NAME=?, USER_TELL=?, USER_PW=? WHERE USER_ID=?";
 			pstmt = connection.prepareStatement(query);
-			pstmt.setString(1, password);
-			pstmt.setString(2, id);
+			
+			pstmt.setString(1, user.getUser_name());
+			pstmt.setString(2, user.getUser_tell());
+			pstmt.setString(3, user.getUser_pw());
+			pstmt.setString(4, user.getUser_id());
 			
 			result = pstmt.executeUpdate();
-		} catch (Exception e) {
-		}finally {
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
 			close(pstmt);
 		}
 		return result;
@@ -90,26 +96,4 @@ public class UsersDao {
 		return result;
 		
 	}
-	
-	
-	
-//	public static void main(String[] args) {
-//	Connection connection = JDBCTemplate.getConnection();
-//	UsersDAO usersDao = new UsersDAO();
-//	
-//	Users users1 = usersDao.findUserById(connection,"users_khtest");
-//	System.out.println(users1+"테스트1");
-//	
-//	Users user = new Users("users_khtest1", "0000", "김길동", "010-5766-7979");
-//	usersDao.insertUser(connection,user);
-//	Users users2 = usersDao.findUserById(connection,"users_khtest1");
-//	System.out.println(users2+"테스트2");
-//	int result = usersDao.updatePassword(connection, "users_khtest1", "1234");
-//	commit(connection);
-//	Users users3 = usersDao.findUserById(connection,"users_khtest1");
-//	System.out.println(users3+"테스트4");
-//	int result1 = usersDao.deleteUser(connection, "users_khtest1");
-//	System.out.println(result1);
-//	commit(connection);
-//	}
 }

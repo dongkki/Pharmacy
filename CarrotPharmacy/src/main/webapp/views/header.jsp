@@ -44,9 +44,9 @@
                     <a class="navbar-brand d-none d-sm-block me-4 order-lg-1" href="<%=request.getContextPath() %>/views/index.jsp"><img src="<%=request.getContextPath() %>\views\img\logo_carrot_pharm.png" width="150" alt="Carrot"></a>
                     <div class="navbar-toolbar d-flex align-items-center order-lg-3">
                         <% if((loginPham == null) && (loginUser == null)){ %>
-                                <a class="btn btn-outline-primary btn-shadow mx-2" href="<%=request.getContextPath() %>/views/user/enrollUser.jsp" target="_blank" rel="noopener">
+                                <a class="btn btn-outline-primary btn-shadow mx-2" href="<%=request.getContextPath() %>/views/user/enrollUser.jsp" rel="noopener">
                                 <i class="ci-user-circle me-2"></i>Sign-up</a>
-                                <a class="btn btn-primary btn-shadow mx-2" href="<%=request.getContextPath() %>/views/user/loginUser.jsp" target="_blank" rel="noopener">
+                                <a class="btn btn-primary btn-shadow mx-2" href="<%=request.getContextPath() %>/views/user/loginUser.jsp" rel="noopener">
                                 <i class="ci-user-circle me-2"></i>Log-in</a>
                             <% } else if (loginPham != null){ %>
                                 <table>
@@ -59,7 +59,7 @@
 			                               	<i class="ci-user-circle me-2"></i>Info</a>
                                			</td>
                                			<td>
-			                               	<a class="btn btn-outline-primary btn-shadow mx-2" href="<%=request.getContextPath() %>/logoutPham" target="_blank" rel="noopener">
+			                               	<a class="btn btn-outline-primary btn-shadow mx-2" href="<%=request.getContextPath() %>/logoutPham" rel="noopener">
 			                               	<i class="ci-user-circle me-2"></i>Log-out</a>
                                			</td>
                                		</tr>
@@ -75,7 +75,7 @@
 			                               	<i class="ci-user-circle me-2"></i>Info</a>
                                			</td>
                                			<td>
-			                               	<a class="btn btn-outline-primary btn-shadow mx-2" href="<%=request.getContextPath() %>/logoutPham" target="_blank" rel="noopener">
+			                               	<a class="btn btn-outline-primary btn-shadow mx-2" href="<%=request.getContextPath() %>/logoutPham" rel="noopener">
 			                               	<i class="ci-user-circle me-2"></i>Log-out</a>
                                			</td>
                                		</tr>

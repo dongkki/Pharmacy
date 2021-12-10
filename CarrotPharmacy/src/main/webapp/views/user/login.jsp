@@ -24,7 +24,7 @@
 			<%--로그인 된 사용자 정보 보여주는 폼 영역 시작--%>
 			<table>
 				<tr>
-					<td colspan="2"><%=loginPham.getPham_id()%> 님 안녕하세요?</td>
+					<td colspan="2"><%=loginPham.getPham_id()%> 님 환영합니다.</td>
 				</tr>
 				<tr>
 					<td>

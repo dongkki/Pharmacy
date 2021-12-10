@@ -32,8 +32,9 @@
                                     <i class="ci-user-circle fs-xl" style="height: 5rem;"></i>
                                 </div>
                                 <div class="ps-md-3">
-                                    <h3 class="fs-base mb-0">admin - 아이콘 크기 어떻게 키우지</h3>
-                                    <span class="text-accent fs-sm">admin@mail.com</span>
+                                    <h3 class="fs-base mb-0">
+                                    	<%=loginUser.getUser_name() %>
+									</h3>
                                 </div>
                             </div><a class="btn btn-primary d-lg-none mb-2 mt-3 mt-md-0" href="#account-menu" data-bs-toggle="collapse" aria-expanded="false"><i class="ci-menu me-2"></i>메뉴</a>
 
@@ -63,23 +64,23 @@
                         <a class="btn btn-primary btn-sm" href="index.html"><i class="ci-sign-out me-2"></i>Sign out</a>
                     </div>
                     <!-- Profile form-->
-                    <form>
+                    <form name="updateInfo" action="<%= request.getContextPath() %>/updateUser" method="POST">
                         <div class="bg-secondary rounded-3 p-4 mb-3">
                             <h4>내 정보 수정</h4>
                         </div>
                         <div class="row gx-4 gy-3">
                             <div class="col-sm-6">
                                 <label class="form-label" for="account-fn">이름</label>
-                                <input class="form-control" type="text" id="account-fn" value="admin">
+                                <input class="form-control" type="text" id="name" name="name">
                             </div>
                             <div class="col-sm-6">
                                 <label class="form-label" for="account-phone">전화번호</label>
-                                <input class="form-control" type="text" id="account-phone" value="+82 010 1234 5678" required>
+                                <input class="form-control" type="text" id="tel" name="tel" required>
                             </div>
                             <div class="col-sm-6">
                                 <label class="form-label" for="account-pass">새 비밀번호</label>
                                 <div class="password-toggle">
-                                    <input class="form-control" type="password" id="account-pass">
+                                    <input class="form-control" type="password" id="pw" name="pw">
                                     <label class="password-toggle-btn" aria-label="Show/hide password">
                                         <input class="password-toggle-check" type="checkbox">
                                         <span class="password-toggle-indicator"></span>
