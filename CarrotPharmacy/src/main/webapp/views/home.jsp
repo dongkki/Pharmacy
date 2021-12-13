@@ -39,7 +39,6 @@
         <!-- section2 -->
         <section class="container py-3 my-lg-4 py-sm-5 col-8" id="cuisine">
             <div class="row pb-lg-5">
-
                 <div class="col-md-3 col-sm-6 mb-grid-gutter">
                     <a class="card border-0 home_btn_1" href="#">
                         <div class="card-body py-1 text-center">

@@ -90,7 +90,7 @@
                             <div class="col-sm-6">
                                 <label class="form-label" for="account-confirm-pass">비밀번호 확인</label>
                                 <div class="password-toggle">
-                                    <input class="form-control" type="password" id="account-confirm-pass">
+                                    <input class="form-control" type="password" id="pw2" name="pw2">
                                     <label class="password-toggle-btn" aria-label="Show/hide password">
                                         <input class="password-toggle-check" type="checkbox"><span
                                             class="password-toggle-indicator"></span>
@@ -101,7 +101,7 @@
                                 <hr class="mt-2 mb-3">
                                 <div class="d-flex flex-wrap justify-content-between align-items-center">
                                     <div class="form-check"> </div>
-                                    <button class="btn btn-primary mt-3 mt-sm-0" type="button">저장</button>
+                                    <input class="btn btn-primary mt-3 mt-sm-0" id="updateSubmit" type="submit" value="변경">
                                 </div>
                             </div>
                         </div>
@@ -109,5 +109,25 @@
                 </section>
               </div>
             </div>
+            
+            <script>
+				$(document).ready(() => {
+					$("#updateSubmit").on("click", (e) => {
+						let pass1 = $("#pw").val();			
+						let pass2 = $("#pw2").val();
+						
+						if(pass1.trim() != pass2.trim()) {
+							alert("비밀번호가 일치하지 않습니다.");
+							
+							$("#pw").val("");
+							$("#pw2").val("");
+							$("#pw").focus();
+							
+							return false;
+						}		
+					});
+				});
+	</script>
+            
                 
 <%@ include file="/views/footer.jsp"%>

@@ -22,27 +22,32 @@ public class UserUpdate extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
+			req.setCharacterEncoding("UTF-8");
+			resp.setCharacterEncoding("UTF-8");
+			
 			HttpSession session = req.getSession();
 			Users loginUser = (Users) session.getAttribute("loginUser");
 			
-			Users modifyUser = new Users();
-			modifyUser.setUser_name(req.getParameter("name"));
-			modifyUser.setUser_pw(req.getParameter("tel"));
-			modifyUser.setUser_tell(req.getParameter("pw"));
+			String userId = loginUser.getUser_id();
+			String newName = req.getParameter("name");
+			String newTel = req.getParameter("tel");
+			String newPw = req.getParameter("pw");
 			
-			
-			if(loginUser.getUser_id().equals(modifyUser.getUser_id()) == false) {
-				sendCommonPage("잘못된 아이디 입니다.", "/", req, resp);
+			if(userId == null) {
+				sendCommonPage("잘못된 접근입니다.", "/views/profile/account-profile.jsp", req, resp);
 				return;
 			}
 			
-			int result = service.saveUser(modifyUser);
+			int result = service.modifyUser(userId, newName, newTel, newPw);
 			
 			if(result <= 0) {
 				sendCommonPage("회원정보를 수정할 수 없습니다.", "/views/profile/account-profile.jsp", req, resp);
 				return;
 			}
-			sendCommonPage("회원정보가 수정되었습니다.", "/views/profile/account-profile.jsp", req, resp);
+			
+			loginUser = service.fineUserId(loginUser.getUser_id());
+			session.setAttribute("loginUser", loginUser);
+			sendCommonPage("회원정보가 수정되었습니다.", "/views/index.jsp", req, resp);
 			
 		} catch (Exception e) {
 			sendCommonPage("잘못된 접근입니다.", "/", req, resp);
@@ -54,6 +59,7 @@ public class UserUpdate extends HttpServlet{
 		req.setAttribute("msg", msg);
 		req.setAttribute("location", path);
 		req.getRequestDispatcher("/views/common/msg.jsp").forward(req, resp);
+		
 	}
 
 }

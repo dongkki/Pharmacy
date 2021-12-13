@@ -13,41 +13,53 @@ public class UserService {
 
 	public Users login(String id, String pwd) {
 		Users user = fineUserId(id);
-		
-		if(user != null && user.getUser_pw().equals(pwd) == true) {
+
+		if (user != null && user.getUser_pw().equals(pwd) == true) {
 			return user;
-		}else {
+		} else {
 			return null;
 		}
 	}
-	
+
 	public Users fineUserId(String id) {
 		Connection connection = getConnection();
 		Users user = dao.findUserId(connection, id);
 		close(connection);
 		return user;
-	}  
+	}
 
-	public int saveUser(Users user) {
+	public int enrollUser(Users user) {
 		int result = 0;
 		Connection connection = getConnection();
-		
-		if(user.getUser_id() != "") {
-			result = dao.updateUser(connection, user);
-		}else {
-			result = dao.insertUser(connection, user);
-		}
-		
-		if(result > 0) {
+
+		result = dao.insertUser(connection, user);
+
+		if (result > 0) {
 			commit(connection);
-		}else {
+		} else {
 			rollback(connection);
 		}
 		close(connection);
-		
+
 		return result;
 	}
-	
+
+	public int modifyUser(String id, String name, String tel, String pw) {
+		int result = 0;
+		Connection connection = getConnection();
+
+		result = dao.modifyUser(connection, id, name, tel, pw);
+
+		if (result > 0) {
+			commit(connection);
+		} else {
+			rollback(connection);
+		}
+		close(connection);
+
+		return result;
+	}
+
 	public boolean isDuplicated(String id) {
 		Connection conn = getConnection();
 		Users user = dao.findUserId(conn, id);
@@ -61,11 +73,3 @@ public class UserService {
 	}
 
 }
-
-
-
-
-
-
-
-

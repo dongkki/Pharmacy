@@ -31,8 +31,9 @@
                                     <i class="ci-user-circle fs-xl" style="height: 5rem;"></i>
                                 </div>
                                 <div class="ps-md-3">
-                                    <h3 class="fs-base mb-0">admin - 아이콘 크기 어떻게 키우지</h3>
-                                    <span class="text-accent fs-sm">admin@mail.com</span>
+                                    <h3 class="fs-base mb-0">
+                                    	<%=loginUser.getUser_name() %>
+									</h3>
                                 </div>
                             </div><a class="btn btn-primary d-lg-none mb-2 mt-3 mt-md-0" href="#account-menu" data-bs-toggle="collapse" aria-expanded="false"><i class="ci-menu me-2"></i>메뉴</a>
 

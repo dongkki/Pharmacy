@@ -58,7 +58,7 @@ public class UsersDao {
 		return result;
 	}
 
-	public int updateUser(Connection connection, Users user) {
+	public int modifyUser(Connection connection, String id, String name, String tel, String pw) {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		String query = null;
@@ -66,10 +66,10 @@ public class UsersDao {
 			query = "UPDATE USERS SET USER_NAME=?, USER_TELL=?, USER_PW=? WHERE USER_ID=?";
 			pstmt = connection.prepareStatement(query);
 			
-			pstmt.setString(1, user.getUser_name());
-			pstmt.setString(2, user.getUser_tell());
-			pstmt.setString(3, user.getUser_pw());
-			pstmt.setString(4, user.getUser_id());
+			pstmt.setString(1, name);
+			pstmt.setString(2, tel);
+			pstmt.setString(3, pw);
+			pstmt.setString(4, id);
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
