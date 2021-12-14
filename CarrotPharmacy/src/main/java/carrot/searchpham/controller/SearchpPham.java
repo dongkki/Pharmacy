@@ -13,7 +13,7 @@ import carrot.service.PharmacyService;
 import carrot.vo.Pharmacy;
 
 @WebServlet("/searchpham.do")
-public class SearchpPam extends HttpServlet {
+public class SearchpPham extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	PharmacyService service = new PharmacyService();

@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="carrot.vo.Drug"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -255,8 +256,7 @@
 	<div class="row justify-content-center">
 		<!---------------------------------------------------------------------------------------------------->
 		<!-- 왼쪽 약 목록 -->
-		<section class="col-lg-5 pt-2;" data-simplebar
-			data-simplebar-auto-hide="false">
+		<section class="col-lg-5 pt-2;" data-simplebar data-simplebar-auto-hide="false">
 			<div class="d-flex pb-3 justify-content-center">
 				<h2 class="h3 text-center mb-3 me-3">검색 결과</h2>
 			</div>
@@ -265,263 +265,38 @@
 					style="height: 55rem;" data-simplebar
 					data-simplebar-auto-hide="false">
 					<!-- 약 목록1 -->
-					<% for(Drug drug : list){ %>
-					<li class="widget-list-item widget-filter-item">
-						<div class="card product-card product-list">
-							<button class="btn-wishlist btn-sm" type="button"
-								data-bs-toggle="tooltip" data-bs-placement="left"
-								title="Add to wishlist">
-								<i class=" ci-bookmark"></i>
-							</button>
-							<div class="d-sm-flex align-items-center">
-								<a class="product-list-thumb" href="pharm_detail.html"> <img
-									src="img\drug\tylenol.jpg" alt="Product">
-								</a>
-								<div class="card-body py-2">
-									<a class="product-meta d-block fs-xs pb-1" href="#"><%= drug.getDrugName() %></a>
-									<h3 class="product-title fs-base">
-										<a href="#">타이레놀</a>
-									</h3>
-									<h5 class="product-title fs-base">
-										<a href="#"><small>▶ 이 약은 감기로 인한
-												발열 및 동통(통증), 두통, 신경통, 근육통, 월경통, 염좌통(삔 통증)과 치통, 류마티양 동통(통증)에
-												사용합니다.</small></a>
-									</h5>
+					<% if(list == null || list.isEmpty()){ %> 
+						<li class="widget-list-item widget-filter-item"> 조회된 게시글이 없습니다.</li>
+					<% } else { %>
+						<% for(Drug drug : list){ %>
+						<li class="widget-list-item widget-filter-item">
+							<div class="card product-card product-list">
+								<button class="btn-wishlist btn-sm" type="button"
+									data-bs-toggle="tooltip" data-bs-placement="left"
+									title="Add to wishlist">
+									<i class=" ci-bookmark"></i>
+								</button>
+								<div class="d-sm-flex align-items-center">
+									<a class="product-list-thumb" href="#"> <img
+										src="<%= request.getContextPath() %>/views/img\drug\tylenol.jpg" alt="Product">
+									</a>
+									<div class="card-body py-2">
+										<a class="product-meta d-block fs-xs pb-1" href="#"><%= drug.getDrugManufactoror() %></a>
+										<h3 class="product-title fs-base">
+											<a href="#"><%= drug.getDrugName() %></a>
+										</h3>
+										<h5 class="product-title fs-base">
+											<a href="#"><small>▶ <%= drug.getDrugPrecautions() %></small></a>
+										</h5>
+									</div>
 								</div>
 							</div>
-						</div>
-					</li>
+						</li>
+						<% } %>
 					<% } %>
-					<!-- 약 목록1 -->
-					<li class="widget-list-item widget-filter-item">
-						<div class="card product-card product-list">
-							<button class="btn-wishlist btn-sm" type="button"
-								data-bs-toggle="tooltip" data-bs-placement="left"
-								title="Add to wishlist">
-								<i class="ci-heart"></i>
-							</button>
-							<div class="d-sm-flex align-items-center">
-								<a class="product-list-thumb" href="pharm_detail.html"> <img
-									src="img\drug/doctorbearse.jpg" alt="Product">
-								</a>
-								<div class="card-body py-2">
-									<a class="product-meta d-block fs-xs pb-1" href="#">(주)대웅제약</a>
-									<h3 class="product-title fs-base">
-										<a href="pharm_detail.html">닥터베아제</a>
-									</h3>
-									<h5 class="product-title fs-base">
-										<a href="pharm_detail.html"><small>▶ ▶이 약은 소화불량,
-												식욕감퇴(식욕부진), 과식, 체함, 소화촉진, 소화불량으로 인한 위부팽만감에 사용합니다.</small></a>
-									</h5>
-									<div class="d-flex justify-content-between">
-										<div class="product-price">
-											<span class="text-accent"><small>02-555-7790</small></span>
-										</div>
-										<div class="star-rating">
-											<i class="star-rating-icon ci-star-filled active"></i> <i
-												class="star-rating-icon ci-star-filled active"></i> <i
-												class="star-rating-icon ci-star-filled active"></i> <i
-												class="star-rating-icon ci-star-filled active"></i> <i
-												class="star-rating-icon ci-star"></i>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</li>
-					<!-- 약 목록1 -->
-					<li class="widget-list-item widget-filter-item">
-						<div class="card product-card product-list">
-							<button class="btn-wishlist btn-sm" type="button"
-								data-bs-toggle="tooltip" data-bs-placement="left"
-								title="Add to wishlist">
-								<i class="ci-heart"></i>
-							</button>
-							<div class="d-sm-flex align-items-center">
-								<a class="product-list-thumb" href="pharm_detail.html"> <img
-									src="img\drug/hupenjung.jpg" alt="Product">
-								</a>
-								<div class="card-body py-2">
-									<a class="product-meta d-block fs-xs pb-1" href="#">(주)대웅제약</a>
-									<h3 class="product-title fs-base">
-										<a href="pharm_detail.html">휴펜정</a>
-									</h3>
-									<h5 class="product-title fs-base">
-										<a href="pharm_detail.html"><small>▶ 이 약은 감기로 인한
-												발열 및 통증, 치통과 두통, 신경통, 근육통, 월경통, 관절통, 류마티스성 통증에 사용합니다.</small></a>
-									</h5>
-									<div class="d-flex justify-content-between">
-										<div class="product-price">
-											<span class="text-accent"><small>02-555-7790</small></span>
-										</div>
-										<div class="star-rating">
-											<i class="star-rating-icon ci-star-filled active"></i> <i
-												class="star-rating-icon ci-star-filled active"></i> <i
-												class="star-rating-icon ci-star-filled active"></i> <i
-												class="star-rating-icon ci-star-filled active"></i> <i
-												class="star-rating-icon ci-star"></i>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</li>
-					<!-- 약 목록1 -->
-					<li class="widget-list-item widget-filter-item">
-						<div class="card product-card product-list">
-							<button class="btn-wishlist btn-sm" type="button"
-								data-bs-toggle="tooltip" data-bs-placement="left"
-								title="Add to wishlist">
-								<i class="ci-heart"></i>
-							</button>
-							<div class="d-sm-flex align-items-center">
-								<a class="product-list-thumb" href="pharm_detail.html"> <img
-									src="img\drug\tylenol.jpg" alt="Product">
-								</a>
-								<div class="card-body py-2">
-									<a class="product-meta d-block fs-xs pb-1" href="#">(주)대웅제약</a>
-									<h3 class="product-title fs-base">
-										<a href="pharm_detail.html">타이레놀</a>
-									</h3>
-									<h5 class="product-title fs-base">
-										<a href="pharm_detail.html"><small>▶이 약은 감기로 인한 발열
-												및 동통(통증), 두통, 신경통, 근육통, 월경통, 염좌통(삔 통증)과 치통, 류마티양 동통(통증)에
-												사용합니다.</small></a>
-									</h5>
-									<div class="d-flex justify-content-between">
-										<div class="product-price">
-											<span class="text-accent"><small>02-555-7790</small></span>
-										</div>
-										<div class="star-rating">
-											<i class="star-rating-icon ci-star-filled active"></i> <i
-												class="star-rating-icon ci-star-filled active"></i> <i
-												class="star-rating-icon ci-star-filled active"></i> <i
-												class="star-rating-icon ci-star-filled active"></i> <i
-												class="star-rating-icon ci-star"></i>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</li>
-					<!-- 약 목록1 -->
-					<li class="widget-list-item widget-filter-item">
-						<div class="card product-card product-list">
-							<button class="btn-wishlist btn-sm" type="button"
-								data-bs-toggle="tooltip" data-bs-placement="left"
-								title="Add to wishlist">
-								<i class="ci-heart"></i>
-							</button>
-							<div class="d-sm-flex align-items-center">
-								<a class="product-list-thumb" href="pharm_detail.html"> <img
-									src="img\drug/hupenjung.jpg" alt="Product">
-								</a>
-								<div class="card-body py-2">
-									<a class="product-meta d-block fs-xs pb-1" href="#">(주)대웅제약</a>
-									<h3 class="product-title fs-base">
-										<a href="pharm_detail.html">휴펜정</a>
-									</h3>
-									<h5 class="product-title fs-base">
-										<a href="pharm_detail.html"><small>▶ 이 약은 감기로 인한
-												발열 및 통증, 치통과 두통, 신경통, 근육통, 월경통, 관절통, 류마티스성 통증에 사용합니다.</small></a>
-									</h5>
-									<div class="d-flex justify-content-between">
-										<div class="product-price">
-											<span class="text-accent"><small>02-555-7790</small></span>
-										</div>
-										<div class="star-rating">
-											<i class="star-rating-icon ci-star-filled active"></i> <i
-												class="star-rating-icon ci-star-filled active"></i> <i
-												class="star-rating-icon ci-star-filled active"></i> <i
-												class="star-rating-icon ci-star-filled active"></i> <i
-												class="star-rating-icon ci-star"></i>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</li>
-					<!-- 약 목록1 -->
-					<li class="widget-list-item widget-filter-item">
-						<div class="card product-card product-list">
-							<button class="btn-wishlist btn-sm" type="button"
-								data-bs-toggle="tooltip" data-bs-placement="left"
-								title="Add to wishlist">
-								<i class="ci-heart"></i>
-							</button>
-							<div class="d-sm-flex align-items-center">
-								<a class="product-list-thumb" href="pharm_detail.html"> <img
-									src="img\drug\tylenol.jpg" alt="Product">
-								</a>
-								<div class="card-body py-2">
-									<a class="product-meta d-block fs-xs pb-1" href="#">(주)대웅제약</a>
-									<h3 class="product-title fs-base">
-										<a href="pharm_detail.html">타이레놀</a>
-									</h3>
-									<h5 class="product-title fs-base">
-										<a href="pharm_detail.html"><small>▶이 약은 감기로 인한 발열
-												및 동통(통증), 두통, 신경통, 근육통, 월경통, 염좌통(삔 통증)과 치통, 류마티양 동통(통증)에
-												사용합니다.</small></a>
-									</h5>
-									<div class="d-flex justify-content-between">
-										<div class="product-price">
-											<span class="text-accent"><small>02-555-7790</small></span>
-										</div>
-										<div class="star-rating">
-											<i class="star-rating-icon ci-star-filled active"></i> <i
-												class="star-rating-icon ci-star-filled active"></i> <i
-												class="star-rating-icon ci-star-filled active"></i> <i
-												class="star-rating-icon ci-star-filled active"></i> <i
-												class="star-rating-icon ci-star"></i>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</li>
-
-					<!-- 약 목록1 -->
-					<li class="widget-list-item widget-filter-item">
-						<div class="card product-card product-list">
-							<button class="btn-wishlist btn-sm" type="button"
-								data-bs-toggle="tooltip" data-bs-placement="left"
-								title="Add to wishlist">
-								<i class="ci-heart"></i>
-							</button>
-							<div class="d-sm-flex align-items-center">
-								<a class="product-list-thumb" href="pharm_detail.html"> <img
-									src="img\drug\tylenol.jpg" alt="Product">
-								</a>
-								<div class="card-body py-2">
-									<a class="product-meta d-block fs-xs pb-1" href="#">(주)대웅제약</a>
-									<h3 class="product-title fs-base">
-										<a href="pharm_detail.html">타이레놀</a>
-									</h3>
-									<h5 class="product-title fs-base">
-										<a href="pharm_detail.html"><small>▶이 약은 감기로 인한 발열
-												및 동통(통증), 두통, 신경통, 근육통, 월경통, 염좌통(삔 통증)과 치통, 류마티양 동통(통증)에
-												사용합니다.</small></a>
-									</h5>
-									<div class="d-flex justify-content-between">
-										<div class="product-price">
-											<span class="text-accent"><small>02-555-7790</small></span>
-										</div>
-										<div class="star-rating">
-											<i class="star-rating-icon ci-star-filled active"></i> <i
-												class="star-rating-icon ci-star-filled active"></i> <i
-												class="star-rating-icon ci-star-filled active"></i> <i
-												class="star-rating-icon ci-star-filled active"></i> <i
-												class="star-rating-icon ci-star"></i>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</li>
 				</ul>
+			
 			</div>
-			<!-- widget -->
-			<!-- 회색 구분선 -->
 			<div class="border-top pt-3 mt-3"></div>
 		</section>
 		<!-- 왼쪽 약 목록 -->
