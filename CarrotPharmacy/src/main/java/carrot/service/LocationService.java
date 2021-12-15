@@ -9,25 +9,18 @@ import carrot.dao.LocationDao;
 import carrot.vo.Location;
 
 public class LocationService {
-	
-	private LocationDao dao = null;
-	private Connection conn = null;
-	
-	public LocationService() {
-		init();
-	}
+	private LocationDao dao = new LocationDao();
 
-	public void init() {
-		if (conn != null) {
-			close(conn);
-		}
-		conn = getConnection();
-		dao = new LocationDao(conn);
-	}
 
 	public List<Location> selectAll(){
-		dao.setConn(conn);
-		return dao.locationSelect();
+		Connection connection = getConnection();
+		List<Location> locations = dao.selectLocation(connection);
+		return locations;
+	}
+	public Location findLocationByNo(String no) {
+		Connection connection = getConnection();
+		Location location = dao.findLocationByNo(connection, no);
+		return location;
 	}
 	
 }

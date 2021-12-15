@@ -22,7 +22,6 @@ public class SearchDrug extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		List<Drug> list = null;
 		list = service.getBoardList();
-//		System.out.println(list.toString());
 		
 		req.setAttribute("list", list);
 		req.getRequestDispatcher("/views/search/searchDrug.jsp").forward(req, resp);

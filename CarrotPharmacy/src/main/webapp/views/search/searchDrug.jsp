@@ -53,7 +53,7 @@
 					class="ci-filter me-2"></i>Filters</a>
 			</div>
 			<div class="d-none d-sm-flex">
-				<h6>검색 결과 전체 00 개</h6>
+				<h6>검색 결과 전체 개</h6>
 			</div>
 		</div>
 
@@ -271,15 +271,13 @@
 						<% for(Drug drug : list){ %>
 						<li class="widget-list-item widget-filter-item">
 							<div class="card product-card product-list">
-								<button class="btn-wishlist btn-sm" type="button"
-									data-bs-toggle="tooltip" data-bs-placement="left"
-									title="Add to wishlist">
+								<!-- 북마크에 추가하기 시작 -->
+								<button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left"	title="Add to wishlist">
 									<i class=" ci-bookmark"></i>
 								</button>
+								<!-- 북마크에 추가하기 끝 -->
 								<div class="d-sm-flex align-items-center">
-									<a class="product-list-thumb" href="#"> <img
-										src="<%= request.getContextPath() %>/views/img\drug\tylenol.jpg" alt="Product">
-									</a>
+									<a class="product-list-thumb" href="#"> <img src="<%= request.getContextPath() %>/views/img\drug\tylenol.jpg" alt="Product"></a>
 									<div class="card-body py-2">
 										<a class="product-meta d-block fs-xs pb-1" href="#"><%= drug.getDrugManufactoror() %></a>
 										<h3 class="product-title fs-base">
@@ -315,8 +313,7 @@
 				<div class="row pt-4">
 					<div class="col-md-12 col-sm-12 mb-grid-gutter">
 						<div class="card border-0 shadow">
-							<img class="card-img-top" src="img/drug/doctorbearse.jpg"
-								alt="닥터베아제정">
+							<img class="card-img-top" src="img/drug/doctorbearse.jpg" alt="닥터베아제정">
 							<div class="card-body">
 								<h6 class="col-lg-12">건위소화제</h6>
 								<ul class="list-unstyled mb-0">
@@ -375,4 +372,31 @@
 </div>
 <!-- 약 목록과 상세정보 container-->
 
+
 <%@ include file="/views/footer.jsp"%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
