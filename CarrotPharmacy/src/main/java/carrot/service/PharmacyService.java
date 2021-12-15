@@ -14,7 +14,6 @@ import carrot.vo.Pharmacy;
 public class PharmacyService {
 	private PharmacyDao dao = new PharmacyDao();
 	
-	
 	public  Pharmacy findPharmacyByNo(String no) {
 		Connection connection = getConnection();
 		Pharmacy pham = dao.findPharmacyByNo(connection, no);

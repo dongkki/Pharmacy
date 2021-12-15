@@ -11,20 +11,17 @@ import carrot.vo.Drug;
 public class DrugService {
 	private static DrugDao dao = new DrugDao();
 
-	public List<Drug> getBoardList() {
+	public List<Drug> getDrugList() {
 		Connection connection = getConnection();
 		List<Drug> list = dao.findAll(connection);
 		close(connection);
 		return list;
 	}
 	
-//	public static List<Drug> selectDrugName(String searchDrugName){
-//		drugDao.setConn(conn);
-//		return drugDao.selectDrugName(searchDrugName);
-//	}
-//	
-//	public static List<Drug> selectDrugManu(String searchDrugManu){
-//		drugDao.setConn(conn);
-//		return drugDao.selectDrugName(searchDrugManu);
-//	}
+	public Drug findDrugByName(String name) {
+		Connection connection = getConnection();
+		Drug drug = dao.findDrugByName(connection, name);
+		return drug;
+	}
+	
 }

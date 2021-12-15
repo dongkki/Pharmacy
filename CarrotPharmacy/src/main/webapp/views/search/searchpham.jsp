@@ -29,8 +29,7 @@
 				<h1 class="h3  text-light fw-bolder mb-0">약국 검색</h1>
 			</div>
 		</div>
-		<form action="<%=request.getContextPath()%>/searchPham.do"
-			method="get">
+		<form action="<%=request.getContextPath()%>/searchPham.do" method="get">
 			<div class="row mt-4 mb-n2">
 				<div class="col-lg-6 col-md-8">
 					<div class="input-group input-group-lg flex-nowrap">
@@ -323,7 +322,6 @@
 									<span class="text-accent"><small><%= phams.getPham_tell() %></small></span>
 								</div>
 								
-								
 								<div class="star-rating">
 										<button id="getLocation<%=phams.getPham_no()%>">위치보기</button>
 										
@@ -368,12 +366,9 @@
 			<!-- Map -->
 			<aside class="col-lg-5 d-none d-lg-block">
 				<div class="d-flex d-lg-block p-1 ms-auto w-100">
-					<div
-						class="position-relative bg-size-cover bg-position-center rounded-3 py-5 mb-grid-gutter"
-						 >
-						<div  class="iframe-full-height-wrap" style =" width : 500px; height : 500px; background-color : black;" id ="googleMap" >
+					<div class="position-relative bg-size-cover bg-position-center rounded-3 py-5 mb-grid-gutter">
+						<div class="iframe-full-height-wrap" style =" width : 500px; height : 500px; background-color : black;" id ="googleMap" >
 						<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAj4C5WATz3WZ5Rp8SRONI7VgimemfYK5k&callback=Map"></script>
-						</div>
 						</div>
 					</div>
 				</div>
@@ -381,9 +376,5 @@
 			<div class="col-lg-1"></div>
 		</div>
 	</div>
-	</main>
-
-
-
 
 	<%@ include file="/views/footer.jsp"%>

@@ -7,7 +7,8 @@
 <%@ include file="/views/header.jsp"%>
 
 <%
-	List<Drug> list = (List<Drug>)request.getAttribute("list");
+	List<Drug> list = new ArrayList<Drug>();
+	list = (List<Drug>)request.getAttribute("list");
 %>
 
 <!-- 페이지 위치 -->
@@ -30,15 +31,17 @@
 
 		</div>
 		<!-- 검색바 -->
-		<div class="row mt-4 mb-n2">
-			<div class="col-lg-6 col-md-8">
-				<div class="input-group input-group-lg flex-nowrap">
-					<i class="ci-search position-absolute top-50 translate-middle-y ms-3"></i>
-					<input class="form-control rounded-start" type="text" placeholder="의약품명 · 제조사 · 약 모양을 입력하세요.">
-					<button class="btn btn-primary btn-lg fs-base home_search_btn" type="button">검색</button>
+		<form action="<%=request.getContextPath()%>/searchDrug.do" method="get">
+			<div class="row mt-4 mb-n2">
+				<div class="col-lg-6 col-md-8">
+					<div class="input-group input-group-lg flex-nowrap">
+						<i class="ci-search position-absolute top-50 translate-middle-y ms-3"></i>
+						<input class="form-control rounded-start" id="name" type="text" placeholder="의약품명 · 제조사 · 약 모양을 입력하세요.">
+						<button class="btn btn-primary btn-lg fs-base home_search_btn" type="submit">검색</button>
+					</div>
 				</div>
 			</div>
-		</div>
+		</form>
 	</div>
 </div>
 <!---------------------------------------------------------------------------------------------------->
@@ -53,7 +56,12 @@
 					class="ci-filter me-2"></i>Filters</a>
 			</div>
 			<div class="d-none d-sm-flex">
-				<h6>검색 결과 전체 개</h6>
+				<% if(list == null || list.isEmpty()){ %>
+					<h6>검색 결과 전체 0개</h6>
+				<% } else { %>
+					<h6>검색 결과 전체 <%= list.size() %> 개</h6>
+				<% } %>
+					
 			</div>
 		</div>
 
@@ -261,9 +269,7 @@
 				<h2 class="h3 text-center mb-3 me-3">검색 결과</h2>
 			</div>
 			<div class="widget widget-links widget-filter">
-				<ul class="widget-list widget-filter-list pt-1"
-					style="height: 55rem;" data-simplebar
-					data-simplebar-auto-hide="false">
+				<ul class="widget-list widget-filter-list pt-1"	style="height: 55rem;" data-simplebar data-simplebar-auto-hide="false">
 					<!-- 약 목록1 -->
 					<% if(list == null || list.isEmpty()){ %> 
 						<li class="widget-list-item widget-filter-item"> 조회된 게시글이 없습니다.</li>
@@ -277,23 +283,65 @@
 								</button>
 								<!-- 북마크에 추가하기 끝 -->
 								<div class="d-sm-flex align-items-center">
-									<a class="product-list-thumb" href="#"> <img src="<%= request.getContextPath() %>/views/img\drug\tylenol.jpg" alt="Product"></a>
+									<button type="button" class="product-list-thumb" id="drug<%= drug.getDrugName() %>"> <img id="d" src="<%=request.getContextPath() %>/views/img/drug/<%= drug.getDrugCode() %>"></button>
 									<div class="card-body py-2">
-										<a class="product-meta d-block fs-xs pb-1" href="#"><%= drug.getDrugManufactoror() %></a>
+										<a class="product-meta d-block fs-xs pb-1"><%= drug.getDrugManufactoror() %></a>
 										<h3 class="product-title fs-base">
-											<a href="#"><%= drug.getDrugName() %></a>
+											<%= drug.getDrugName() %>
 										</h3>
 										<h5 class="product-title fs-base">
-											<a href="#"><small>▶ <%= drug.getDrugPrecautions() %></small></a>
+											<small>▶ <%= drug.getDrugPrecautions() %></small>
 										</h5>
 									</div>
 								</div>
+							</div>
+							<script>
+								$("#drug<%= drug.getDrugName() %>").click(function(){
+									let drugCode = "<%= drug.getDrugCode() %>";
+									let drugName = "<%= drug.getDrugName() %>";
+									let drugManufactoror = "<%= drug.getDrugManufactoror() %>";
+									let drugEffect = "<%= drug.getDrugEffect() %>";
+									let drugUsage = "<%= drug.getDrugUsage() %>";
+									let drugHowStore = "<%= drug.getDrugHowStore() %>";
+									let drugPrecautions = "<%= drug.getDrugPrecautions() %>";
+									$.ajax({
+										type : "get",
+										url : "<%=request.getContextPath()%>/views/search/searchDetail.do",
+										data : {
+											drugCode,
+											drugName,
+											drugManufactoror,
+											drugEffect,
+											drugUsage,
+											drugHowStore,
+											drugPrecautions,
+										},
+										success : function (object) {
+											code = object.drugCode;
+											name = object.drugName;
+											manu = object.drugManufactoror;
+											effect = object.drugEffect;
+											usage = object.drugUsage;
+											how = object.drugHowStore;
+											precation = object.drugPrecautions;
+											$("#d").html(code);
+											$("#drugname").html(name);
+											$("#drugname2").html(name);
+											$("#drugManufactoror").html(manu);
+											$("#drugEffect").html(effect);
+											$("#drugUsage").html(usage);
+											$("#drugHowStore").html(how);
+											$("#drugPrecautions").html(precation);
+										},
+									});
+								});
+							</script>
+							<div id="asd">
 							</div>
 						</li>
 						<% } %>
 					<% } %>
 				</ul>
-			
 			</div>
 			<div class="border-top pt-3 mt-3"></div>
 		</section>
@@ -303,62 +351,59 @@
 		<section class="col-lg-5 d-none d-lg-block px-4 px-xl-4 border-tp">
 			<!-- 약 이름 -->
 			<div class="d-flex pb-3 justify-content-center">
-				<h2 class="h3 text-center mb-3 me-3">닥터베아제정</h2>
+				<h2 class="h3 text-center mb-3 me-3" id="drugname2"></h2>
 				<i class=" ci-bookmark fs-xl mt-1 mb-0 text-orange"></i>
 			</div>
 			<!-- 스크롤바 -->
-			<div style="height: 70rem;" data-simplebar
-				data-simplebar-auto-hide="false">
+			<div style="height: 70rem;" data-simplebar data-simplebar-auto-hide="false">
 				<!-- 약 사진 & 설명 -->
 				<div class="row pt-4">
 					<div class="col-md-12 col-sm-12 mb-grid-gutter">
+						<% if(list == null || list.isEmpty()){ %> 
+							<h2> 조회된 게시글이 없습니다.</h2>
+						<% } else { %>
 						<div class="card border-0 shadow">
-							<img class="card-img-top" src="img/drug/doctorbearse.jpg" alt="닥터베아제정">
+							<!-- <img class="card-img-top" src="img/drug/doctorbearse.jpg" alt="닥터베아제정"> -->
 							<div class="card-body">
-								<h6 class="col-lg-12">건위소화제</h6>
+								<div>
+									<h6 class="col-lg-12" id="drugname"></h6>
+								</div>
 								<ul class="list-unstyled mb-0">
 									<li class="d-flex pb-3 border-bottom"><i
 										class="ci-briefcase fs-lg mt-2 mb-0 text-orange"></i>
 										<div class="ps-3">
-											<span class="fs-ms text-muted">회사</span> <a
-												class="d-block text-heading fs-sm"
-												href="https://www.daewoong.co.kr/">(주)대웅제약</a>
+											<span class="fs-ms text-muted">회사</span> 
+											<a class="d-block text-heading fs-sm" id="drugManufactoror"></a>
 										</div></li>
 									<li class="d-flex pt-2 pb-3"><i
 										class="ci-document fs-lg mt-2 mb-0 text-orange"></i>
 										<div class="ps-3">
-											<span class="fs-ms text-muted">효능</span> <a
-												class="d-block text-heading fs-sm">이 약은 소화불량,
-												식욕감퇴(식욕부진), 과식, 체함, 소화촉진, 소화불량으로 인한 위부팽만감에 사용합니다.</a>
+											<span class="fs-ms text-muted">효능</span> 
+											<a class="d-block text-heading fs-sm" id="drugEffect"></a>
 										</div></li>
 									<li class="d-flex pt-2 pb-3"><i
 										class="ci-document fs-lg mt-2 mb-0 text-orange"></i>
 										<div class="ps-3">
-											<span class="fs-ms text-muted">복용방법</span> <a
-												class="d-block text-heading fs-sm">성인 1회 1정을 1일 3회 식후에
-												복용합니다.</a>
+											<span class="fs-ms text-muted">복용방법</span> 
+											<a class="d-block text-heading fs-sm" id="drugUsage"></a>
 										</div></li>
 									<li class="d-flex pt-2 pb-3 border-bottom"><i
 										class="ci-document fs-lg mt-2 mb-0 text-orange"></i>
 										<div class="ps-3">
-											<span class="fs-ms text-muted">보관법</span> <a
-												class="d-block text-heading fs-sm">습기와 빛을 피해 실온에서
-												보관하십시오. 어린이의 손이 닿지 않는 곳에 보관하싶시오.</a>
+											<span class="fs-ms text-muted">보관법</span> 
+											<a class="d-block text-heading fs-sm" id="drugHowStore"></a>
 										</div></li>
 									<li class="d-flex pb-3"><i
 										class="ci-edit fs-lg mt-2 mb-0 text-orange"></i>
 										<div class="ps-3">
-											<span class="fs-ms text-muted">주의사항</span> <a
-												class="d-block text-heading fs-sm" href="#">만 7세 이하의 소아는
-												이 약을 복용하지 마십시오. 이 약을 복용하기 전에 알레르기 체질인 사람, 임부 또는 임신하고 있을 가능성이
-												있는 여성, 이 약 또는 황색4호에 과민증 환자는 의사 또는 약사와 상담하싶시오. 정해진 용법과 용량을 잘
-												지키십시오. 2주 정도 복용하여도 증상의 개선이 없을 경우 즉각 복용을 중지하고 의사 또는 약사와
-												상답하십시오. </a>
+											<span class="fs-ms text-muted">주의사항</span> 
+											<a class="d-block text-heading fs-sm" id="drugPrecautions"></a>
 										</div></li>
 								</ul>
 							</div>
 							<!-- card-body -->
 						</div>
+						<% } %>
 						<!-- card -->
 					</div>
 					<!-- col -->

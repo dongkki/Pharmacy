@@ -33,6 +33,9 @@
     <!-- icon -->
     <script src="https://kit.fontawesome.com/49fd011980.js" crossorigin="anonymous"></script>
     
+    <!-- jquery -->
+    <script src="<%= request.getContextPath() %>/views/js/jquery-3.6.0.min.js"></script>
+    
 </head>
 
 <!-- Body-->
@@ -49,7 +52,7 @@
         <header class="bg-light shadow-sm navbar-sticky">
             <div class="navbar navbar-expand-lg navbar-light">
                 <div class="container">
-                    <a class="navbar-brand d-none d-sm-block me-4 order-lg-1" href="<%=request.getContextPath() %>/views/main.jsp"><img src="<%=request.getContextPath() %>/views/img/logo_carrot_pharm.png" width="150" alt="Carrot"></a>
+                    <a class="navbar-brand d-none d-sm-block me-4 order-lg-1" href="<%=request.getContextPath() %>/views/index.jsp"><img src="<%=request.getContextPath() %>/views/img/logo_carrot_pharm.png" width="150" alt="Carrot"></a>
                     <div class="navbar-toolbar d-flex align-items-center order-lg-3">
                         <% if((loginPham == null) && (loginUser == null)){ %>
                                 <a class="btn btn-outline-primary btn-shadow mx-2" href="<%=request.getContextPath() %>/views/user/enrollUser.jsp">

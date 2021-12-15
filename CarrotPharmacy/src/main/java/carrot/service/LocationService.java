@@ -11,7 +11,6 @@ import carrot.vo.Location;
 public class LocationService {
 	private LocationDao dao = new LocationDao();
 
-
 	public List<Location> selectAll(){
 		Connection connection = getConnection();
 		List<Location> locations = dao.selectLocation(connection);

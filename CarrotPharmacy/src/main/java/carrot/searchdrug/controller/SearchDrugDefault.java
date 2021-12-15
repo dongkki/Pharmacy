@@ -1,4 +1,4 @@
-package carrot.searchpham.controller;
+package carrot.searchdrug.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -13,15 +13,15 @@ import carrot.service.DrugService;
 import carrot.vo.Drug;
 
 @WebServlet("/views/search/searchDrug")
-public class SearchDrug extends HttpServlet{
+public class SearchDrugDefault extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
-	DrugService service = new DrugService();
+	private DrugService service = new DrugService();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		List<Drug> list = null;
-		list = service.getBoardList();
+		list = service.getDrugList();
 		
 		req.setAttribute("list", list);
 		req.getRequestDispatcher("/views/search/searchDrug.jsp").forward(req, resp);

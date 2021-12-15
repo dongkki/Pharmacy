@@ -1,4 +1,4 @@
-package carrot.searchdrug.controller;
+package carrot.searchpham.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ import carrot.service.PharmacyService;
 import carrot.vo.Pharmacy;
 
 @WebServlet("/searchpham.do")
-public class SearchpPham extends HttpServlet {
+public class SearchPham extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	PharmacyService service = new PharmacyService();
