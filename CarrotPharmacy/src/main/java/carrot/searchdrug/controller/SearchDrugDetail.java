@@ -25,15 +25,9 @@ public class SearchDrugDetail extends HttpServlet{
 		req.setCharacterEncoding("UTF-8");
 		resp.setCharacterEncoding("UTF-8");
 		
-		String drugCode = req.getParameter("drugCode");
 		String drugName = req.getParameter("drugName");
-		String drugManufactoror = req.getParameter("drugManufactoror");
-		String drugEffect = req.getParameter("drugEffect");
-		String drugUsage = req.getParameter("drugUsage");
-		String drugHowStore = req.getParameter("drugHowStore");
-		String drugPrecautions = req.getParameter("drugPrecautions");
 		
-		Drug drug = new Drug(drugCode, drugName, drugEffect, drugUsage, drugPrecautions, drugHowStore, drugManufactoror, null);
+		Drug drug = null;
 		JSONObject object = new JSONObject();
 
 		drug = service.findDrugByName(drugName);

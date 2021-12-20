@@ -14,6 +14,13 @@ import carrot.vo.Pharmacy;
 public class PharmacyService {
 	private PharmacyDao dao = new PharmacyDao();
 	
+	
+	/*	public static void main(String[] args) {
+		PharmacyService ps = new PharmacyService();
+		Pharmacy result = ps.findPharmacyByNo("999999");
+		System.out.println(result);
+	}*/
+	
 	public  Pharmacy findPharmacyByNo(String no) {
 		Connection connection = getConnection();
 		Pharmacy pham = dao.findPharmacyByNo(connection, no);
@@ -71,6 +78,34 @@ public class PharmacyService {
 			return false;
 		}
 	}
-
+	
+	
+	private static Connection connection ;
+	//약국정보 테이블의 내용들을 전부 삭제해 초기화 하는 메소드
+	public int init() {
+		connection = getConnection();
+		int result = dao.deleteAll(connection);
+		return result;
+	}
+	
+	//약국정보 테이블의 내용을 최신버전으로 업데이트 하는 메소드 
+	public int add(Pharmacy pham) {
+		int result = 0;
+		if(pham.getPham_no() != null) {
+			result = dao.insertPham(connection, pham);
+		}
+		
+		if(result > 0) {
+			commit(connection);
+		}else {
+			rollback(connection);
+		}
+		
+		return result;
+	}
+	
+	public void closeConn() {
+		close(connection);
+	}
 }
 

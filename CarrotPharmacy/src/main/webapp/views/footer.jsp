@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
     <div class="footer bg-gray">
         <div class="container col-lg-8">
-            <footer class="py-3 my-4">
-                <ul class="nav pb-3 mb-3 justify-content-start">
+            <footer class="py-2 my-2">
+                <ul class="nav mb-1 justify-content-start">
                     <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">서비스 이용약관</a></li>
                     <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">개인정보처리방침</a></li>
                     <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">이메일무단수집거부</a></li>
@@ -14,7 +14,18 @@
             </footer>
         </div>
     </div>
+            
+    <!-- Vendor scrits: js libraries and plugins-->
+	<script src="<%=request.getContextPath() %>/views/vendor/bootstrap/dist/js/bootstrap.bundle.min.js "></script>
+	<script src="<%=request.getContextPath() %>/views/vendor/simplebar/dist/simplebar.min.js "></script>
+	<script src="<%=request.getContextPath() %>/views/vendor/tiny-slider/dist/min/tiny-slider.js "></script>
+	<script src="<%=request.getContextPath() %>/views/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js "></script>
+	<script src="<%=request.getContextPath() %>/views/vendor/nouislider/dist/nouislider.min.js "></script>
+	<script src="<%=request.getContextPath() %>/views/vendor/drift-zoom/dist/Drift.min.js "></script>
 
+	<!-- Main theme script-->
+	<script src="<%=request.getContextPath() %>/views/js/theme.min.js "></script>
+	
+   
 </body>
-
 </html>

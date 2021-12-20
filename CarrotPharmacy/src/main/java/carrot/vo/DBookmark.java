@@ -1,19 +1,18 @@
 package carrot.vo;
 
 public class DBookmark {
-	private String drug_code;
 	private String user_id;
-	private String dbook_score;
+	private String drug_code;
+	private String drug_name;
+	private String drug_manufactoror;
+	private String drug_effect;
 
-	public DBookmark() {
-		super();
+	public String getUser_id() {
+		return user_id;
 	}
 
-	public DBookmark(String drug_code, String user_id, String dbook_score) {
-		super();
-		this.drug_code = drug_code;
+	public void setUser_id(String user_id) {
 		this.user_id = user_id;
-		this.dbook_score = dbook_score;
 	}
 
 	public String getDrug_code() {
@@ -24,25 +23,47 @@ public class DBookmark {
 		this.drug_code = drug_code;
 	}
 
-	public String getUser_id() {
-		return user_id;
+	public String getDrug_name() {
+		return drug_name;
 	}
 
-	public void setUser_id(String user_id) {
+	public void setDrug_name(String drug_name) {
+		this.drug_name = drug_name;
+	}
+
+	public String getDrug_manufactoror() {
+		return drug_manufactoror;
+	}
+
+	public void setDrug_manufactoror(String drug_manufactoror) {
+		this.drug_manufactoror = drug_manufactoror;
+	}
+
+	public String getDrug_effect() {
+		return drug_effect;
+	}
+
+	public void setDrug_effect(String drug_effect) {
+		this.drug_effect = drug_effect;
+	}
+
+	public DBookmark() {
+		super();
+	}
+
+	public DBookmark(String user_id, String drug_code, String drug_name, String drug_manufactoror, String drug_effect) {
+		super();
 		this.user_id = user_id;
-	}
-
-	public String getDbook_score() {
-		return dbook_score;
-	}
-
-	public void setDbook_score(String dbook_score) {
-		this.dbook_score = dbook_score;
+		this.drug_code = drug_code;
+		this.drug_name = drug_name;
+		this.drug_manufactoror = drug_manufactoror;
+		this.drug_effect = drug_effect;
 	}
 
 	@Override
 	public String toString() {
-		return "DbookMark [drug_code=" + drug_code + ", user_id=" + user_id + ", dbook_score=" + dbook_score + "]";
+		return "DBookmark [user_id=" + user_id + ", drug_code=" + drug_code + ", drug_name=" + drug_name
+				+ ", drug_manufactoror=" + drug_manufactoror + ", drug_effect=" + drug_effect + "]";
 	}
 
 }

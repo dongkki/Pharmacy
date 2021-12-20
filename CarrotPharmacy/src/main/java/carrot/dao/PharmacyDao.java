@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import carrot.vo.Pharmacy;
 
 public class PharmacyDao {
+	
 	public Pharmacy findPharmacyByNo(Connection connection, String no) {
 		Pharmacy pham = null;
 		PreparedStatement pstmt = null;
@@ -125,7 +126,6 @@ public class PharmacyDao {
 		}finally {
 			close(pstmt);
 		}
-		
 		return result;
 		
 	}
@@ -161,10 +161,34 @@ public class PharmacyDao {
 		return result;
 	}
 
+	public int deleteAll(Connection connection) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String query = null;
+		
+		try {
+			query = "DELETE FROM PHARMACY";
+			pstmt = connection.prepareStatement(query);
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+/*	public static void main(String[] args) {
+		Connection connection = getConnection();
+		PharmacyDao PharmacyDao = new PharmacyDao();
+
+		Pharmacy test = PharmacyDao.findPharmacyByNo(connection, "999999");
+		System.out.println(test);
+		}*/
+	
 //	public static void main(String[] args) {
 //		Connection connection = JDBCTemplate.getConnection();
-//		PharmacyDao parmDao = new PharmacyDao();
-//
+//		PharmacyDAO parmDao = new PharmacyDAO();
+//		
 //		Pharmacy pham1 = parmDao.findPharmacyByNo(connection, "999999");
 //		System.out.println(pham1+"테스트1");
 //		Pharmacy pham2 = new Pharmacy("123456","시험약국","02-123-1234","0900","2000","0900","2000","0900","2000","0900","2000","0900","2000","1000","1500","","","","");
@@ -173,6 +197,30 @@ public class PharmacyDao {
 //		System.out.println(pham3+"테스트3");
 //		commit(connection);
 //		System.out.println(parmDao.deletePham(connection, "123456"));
+//		
 //	}
-
+//	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

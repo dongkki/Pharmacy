@@ -22,9 +22,9 @@ public class DBookmarkService {
 	
 	
 	//의약품 북마크 추가 메소드
-	public static int addDBookmark(String drugCode, String id, String score) {
+	public int addDBookmark(DBookmark dbookmark) {
 		Connection connection = getConnection();
-		int dBookmark = dao.addDBookmark(connection, drugCode, id, score);
+		int dBookmark = dao.addDBookmark(connection, dbookmark);
 		close(connection);
 		return dBookmark;
 	}

@@ -35,7 +35,7 @@ public class DrugDao {
 				drug.setDrugPrecautions(rs.getString("drug_precautions"));
 				drug.setDrugHowStore(rs.getString("drug_how_store"));
 				drug.setDrugManufactoror(rs.getString("drug_manufactoror"));
-				drug.setDrugPrice(rs.getString("drug_Price"));
+				drug.setDrugImage(rs.getString("drug_image"));
 				
 				list.add(drug);
 			}
@@ -71,6 +71,7 @@ public class DrugDao {
 				drug.setDrugUsage(rs.getString("DRUG_USAGE"));
 				drug.setDrugHowStore(rs.getString("DRUG_HOW_STORE"));
 				drug.setDrugPrecautions(rs.getString("DRUG_PRECAUTIONS"));
+				drug.setDrugImage(rs.getString("drug_image"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -82,15 +83,86 @@ public class DrugDao {
 		return drug;
 	}
 	
-//	public static void main(String[] args) {
-//		Connection connection = JDBCTemplate.getConnection();
-//		DrugDao dao = new DrugDao();
-//
-//		Drug test = dao.findDrugByName(connection, "모더나");
-//		List<Drug> test2 = dao.findAll(connection);
-//		System.out.println(test);
-//		System.out.println(test2);
-//	}
+	public List<Drug> selectDrugManu(Connection connection, String selectDrugManu) {
+		List<Drug> list = new ArrayList<Drug>();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String query = "SELECT * FROM DRUG WHERE DRUG_MANUFACTOROR LIKE ? ORDER BY 1";
+		
+		try {
+			pstmt = connection.prepareStatement(query);
+			pstmt.setString(1, "%"+selectDrugManu+"%");
+			rs = pstmt.executeQuery();
+
+			while (rs.next() == true) {
+				String drugCode = rs.getString("drug_code");
+				String drugName = rs.getString("drug_name");
+				String drugEffect = rs.getString("drug_effect");
+				String drugUsage = rs.getString("drug_usage");
+				String drugPrecaution = rs.getString("drug_precautions");
+				String drugHowStore = rs.getString("drug_how_store");
+				String drugManufactoror = rs.getString("drug_manufactoror");
+				String drugImage = rs.getString("drug_image");
+
+				Drug drug = new Drug(drugCode, drugName, drugEffect, drugUsage, drugPrecaution, drugHowStore, drugManufactoror, drugImage);
+				list.add(drug);
+			}
+			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+			try {
+				close(rs);
+				close(pstmt);
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return list;
+	}
+	
+	public int insertDrug(Connection connection, Drug drug) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String query = "INSERT INTO DRUG (DRUG_CODE,DRUG_NAME,DRUG_EFFECT,DRUG_USAGE,DRUG_PRECAUTIONS,DRUG_HOW_STORE,DRUG_MANUFACTOROR, DRUG_IMAGE)"
+				+ "VALUES (?,?,?,?,?,?,?,?)";
+		
+		try {
+			pstmt = connection.prepareStatement(query);
+			pstmt.setString(1, drug.getDrugCode());
+			pstmt.setString(2, drug.getDrugName());
+			pstmt.setString(3, drug.getDrugEffect());
+			pstmt.setString(4, drug.getDrugUsage());
+			pstmt.setString(5, drug.getDrugPrecautions());
+			pstmt.setString(6, drug.getDrugHowStore());
+			pstmt.setString(7, drug.getDrugManufactoror());
+			pstmt.setString(8, drug.getDrugImage());
+			result = pstmt.executeUpdate();
+			
+			
+		} catch (Exception e) {
+		}finally {
+			
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	public int init(Connection connection) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String query = "DELETE FROM DRUG";
+		
+		try {
+			pstmt = connection.prepareStatement(query);
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
 }
 
 

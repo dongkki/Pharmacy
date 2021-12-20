@@ -9,10 +9,14 @@ public class Drug {
 	private String drugPrecautions;
 	private String drugHowStore;
 	private String drugManufactoror;
-	private String drugPrice;
+	private String drugImage;
+	
+	public Drug() {
+		super();
+	}
 	
 	public Drug(String drugCode, String drugName, String drugEffect, String drugUsage, String drugPrecautions,
-			String drugHowStore, String drugManufactoror, String drugPrice) {
+			String drugHowStore, String drugManufactoror, String drugImage) {
 		super();
 		this.drugCode = drugCode;
 		this.drugName = drugName;
@@ -21,11 +25,7 @@ public class Drug {
 		this.drugPrecautions = drugPrecautions;
 		this.drugHowStore = drugHowStore;
 		this.drugManufactoror = drugManufactoror;
-		this.drugPrice = drugPrice;
-	}
-
-	public Drug() {
-		super();
+		this.drugImage = drugImage;
 	}
 
 	public String getDrugCode() {
@@ -84,18 +84,18 @@ public class Drug {
 		this.drugManufactoror = drugManufactoror;
 	}
 
-	public String getDrugPrice() {
-		return drugPrice;
+	public String getDrugImage() {
+		return drugImage;
 	}
 
-	public void setDrugPrice(String drugPrice) {
-		this.drugPrice = drugPrice;
+	public void setDrugImage(String drugImage) {
+		this.drugImage = drugImage;
 	}
 
 	@Override
 	public String toString() {
-		return "DRUG [drugCode=" + drugCode + ", drugName=" + drugName + ", drugEffect=" + drugEffect + ", drugUsage="
+		return "Drug [drugCode=" + drugCode + ", drugName=" + drugName + ", drugEffect=" + drugEffect + ", drugUsage="
 				+ drugUsage + ", drugPrecautions=" + drugPrecautions + ", drugHowStore=" + drugHowStore
-				+ ", drugManufactoror=" + drugManufactoror + ", drugPrice=" + drugPrice + "]";
+				+ ", drugManufactoror=" + drugManufactoror + ", drugImage=" + drugImage + "]";
 	}
 }
