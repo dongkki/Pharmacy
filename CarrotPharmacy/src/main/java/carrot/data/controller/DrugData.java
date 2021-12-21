@@ -57,6 +57,7 @@ public class DrugData {
 						Node nNode = nList.item(temp);
 						if(nNode.getNodeType() == Node.ELEMENT_NODE){
 							
+							String itemName = null;
 							String efcyQesitm = null;
 							String useMethodQesitm = null;
 							String atpnQesitm = null;
@@ -67,7 +68,12 @@ public class DrugData {
 							Element eElement = (Element) nNode;
 							System.out.println("###########"+count+"번째 검색결과"+"###########");
 							System.out.println("제조사  : " + getTagValue("entpName", eElement));
-							System.out.println("제품명  : " + getTagValue("itemName", eElement));
+							
+							itemName = getTagValue("itemName", eElement);
+							if(itemName.contains("(") == true) {
+								itemName = (itemName.split("\\("))[0];
+							}
+							System.out.println("제품명  : " + itemName);							
 							System.out.println("의약품번호 : " + getTagValue("itemSeq", eElement));
 							
 							//효능
@@ -127,7 +133,7 @@ public class DrugData {
 							System.out.println("수정일자  : " + getTagValue("updateDe", eElement));
 							
 							Drug location = new Drug(getTagValue("itemSeq", eElement), 
-													 getTagValue("itemName", eElement), 
+													 itemName, 
 													 efcyQesitm, 
 													 useMethodQesitm, 
 													 atpnQesitm, 

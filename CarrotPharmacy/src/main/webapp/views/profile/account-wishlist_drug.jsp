@@ -1,5 +1,12 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="carrot.vo.DBookmark"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
+<%
+	List<DBookmark> list = new ArrayList<>();
+	list = (List<DBookmark>)request.getAttribute("list");
+%>
 
 	<%@ include file="/views/header.jsp"%>
 	
@@ -44,7 +51,7 @@
                             </div>
                             <ul class="list-unstyled mb-0">
                                 <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="<%=request.getContextPath() %>/views/profile/account-profile.jsp"><i class="ci-user opacity-60 me-2"></i>내정보</a></li>
-                                <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="<%=request.getContextPath() %>/views/profile/account-wishlist_drug.jsp"><i class="ci-heart opacity-60 me-2"></i>즐겨찾기_약<span class="fs-sm text-muted ms-auto">3</span></a></li>
+	                            <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="<%=request.getContextPath() %>/views/profile/account-wishlist_drug.do?id=<%=loginUser.getUser_id()%>"><i class="ci-heart opacity-60 me-2"></i>즐겨찾기_약<span class="fs-sm text-muted ms-auto"><%=list.size() %></span></a></li>
                                 <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="<%=request.getContextPath() %>/views/profile/account-wishlist_pharm.jsp"><i class="ci-heart opacity-60 me-2"></i>즐겨찾기_약국<span class="fs-sm text-muted ms-auto">3</span></a></li>
                                 <li class="mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="index.html"><i class="ci-sign-out opacity-60 me-2"></i>회원 탈퇴</a></li>
                             </ul>
@@ -59,66 +66,29 @@
                     </div>
                     <!-- Wishlist-->
                     <!-- Item-->
-                    <div class="d-sm-flex justify-content-between mt-lg-4 mb-4 pb-3 pb-sm-2 border-bottom">
-                        <div class="d-block d-sm-flex align-items-start text-center text-sm-start">
-                            <a class="d-block flex-shrink-0 mx-auto me-sm-4" href="drug_detail.html" style="width: 10rem;"><img src="<%=request.getContextPath() %>\views\img\mypage\그날엔정.jpg" alt="Product"></a>
-                            <div class="pt-2">
-                                <h3 class="product-title fs-base mb-2"><a href="drug_detail.html">그날엔정</a></h3>
-                                <div class="fs-sm"><span class="text-muted me-2">제조사:</span>경동제약(주)</div>
-                                <div class="fs-sm"><span class="text-muted me-2">효능:</span>해열.진통.소염제</div>
-                                <div class="fs-lg text-accent pt-2"><small>￦3,000</small></div>
-
-                            </div>
-                        </div>
-                        <div class="pt-2 ps-sm-3 mx-auto mx-sm-0 text-center">
-                            <button class="btn btn-outline-danger btn-sm" type="button"><i class="ci-trash me-2"></i>삭제</button>
-                        </div>
-                    </div>
-                    <!-- Item-->
-                    <div class="d-sm-flex justify-content-between my-4 pb-3 pb-sm-2 border-bottom">
-                        <div class="d-block d-sm-flex align-items-start text-center text-sm-start">
-                            <a class="d-block flex-shrink-0 mx-auto me-sm-4" href="drug_detail.html" style="width: 10rem;"><img src="<%=request.getContextPath() %>\views\img\mypage\모드코에스연질캡슐.jpg" alt="Product"></a>
-                            <div class="pt-2">
-                                <h3 class="product-title fs-base mb-2"><a href="drug_detail.html">모드코에스연질캡슐</a></h3>
-                                <div class="fs-sm"><span class="text-muted me-2">제조사:</span>(주)종근당</div>
-                                <div class="fs-sm"><span class="text-muted me-2">분류:</span>해열.진통.소염제</div>
-                                <div class="fs-lg text-accent pt-2"><small>￦3,000</small></div>
-                            </div>
-                        </div>
-                        <div class="pt-2 ps-sm-3 mx-auto mx-sm-0 text-center">
-                            <button class="btn btn-outline-danger btn-sm" type="button"><i class="ci-trash me-2"></i>삭제</button>
-                        </div>
-                    </div>
-                    <!-- Item-->
-                    <div class="d-sm-flex justify-content-between my-4 pb-3 pb-sm-2 border-bottom">
-                        <div class="d-block d-sm-flex align-items-start text-center text-sm-start">
-                            <a class="d-block flex-shrink-0 mx-auto me-sm-4" href="drug_detail.html" style="width: 10rem;"><img src="<%=request.getContextPath() %>\views\img\mypage\큐시드정.jpg" alt="Product"></a>
-                            <div class="pt-2">
-                                <h3 class="product-title fs-base mb-2"><a href="drug_detail.html">큐시드정</a></h3>
-                                <div class="fs-sm"><span class="text-muted me-2">제조사:</span>(주)유한양행</div>
-                                <div class="fs-sm"><span class="text-muted me-2">분류:</span>제산제</div>
-                                <div class="fs-lg text-accent pt-2"><small>￦3,000</small></div>
-                            </div>
-                        </div>
-                        <div class="pt-2 ps-sm-3 mx-auto mx-sm-0 text-center">
-                            <button class="btn btn-outline-danger btn-sm" type="button"><i class="ci-trash me-2"></i>삭제</button>
-                        </div>
-                    </div>
-                    <!-- Item-->
-                    <div class="d-sm-flex justify-content-between my-4 pb-3 pb-sm-2 border-bottom">
-                        <div class="d-block d-sm-flex align-items-start text-center text-sm-start">
-                            <a class="d-block flex-shrink-0 mx-auto me-sm-4" href="drug_detail.html" style="width: 10rem;"><img src="<%=request.getContextPath() %>\views\img\mypage\코메키나.jpg" alt="Product"></a>
-                            <div class="pt-2">
-                                <h3 class="product-title fs-base mb-2"><a href="drug_detail.html">코메키나캡슐</a></h3>
-                                <div class="fs-sm"><span class="text-muted me-2">제조사:</span>(주)대웅제약</div>
-                                <div class="fs-sm"><span class="text-muted me-2">분류:</span>항히스타민제</div>
-                                <div class="fs-lg text-accent pt-2"><small>￦3,000</small></div>
-                            </div>
-                        </div>
-                        <div class="pt-2 ps-sm-3 mx-auto mx-sm-0 text-center">
-                            <button class="btn btn-outline-danger btn-sm" type="button"><i class="ci-trash me-2"></i>삭제</button>
-                        </div>
-                    </div>
+                    	<% if(list.isEmpty() == true || list == null) {%>
+                    		<div><h5>즐겨찾는 의약품이 없습니다.</h5></div>
+                    	<% } else { %>
+	                    	<% for(DBookmark mark : list){ %>
+		                    <div class="d-sm-flex justify-content-between mt-lg-4 mb-4 pb-3 pb-sm-2 border-bottom">
+		                        <div class="d-block d-sm-flex align-items-start text-center text-sm-start">
+		                            <a class="d-block flex-shrink-0 mx-auto me-sm-4" href="drug_detail.html" style="width: 10rem;"><img src="<%=request.getContextPath() %>\views\img\mypage\그날엔정.jpg" alt="Product"></a>
+		                            <div class="pt-2">
+		                                <h3 class="product-title fs-base mb-2"><a href="drug_detail.html"><%=mark.getDrug_name() %></a></h3>
+		                                <div class="fs-sm"><span class="text-muted me-2">제조사:</span><%=mark.getDrug_manufactoror() %></div>
+		                                <div class="fs-sm"><span class="text-muted me-2">효능:</span><%=mark.getDrug_effect() %></div>
+		                            </div>
+		                        </div>
+		                        <div class="pt-2 ps-sm-3 mx-auto mx-sm-0 text-center">
+		                            <a href="<%=request.getContextPath() %>/views/profile/account-wishlist_drug.do?name=<%=mark.getDrug_name()%>">
+		                            	<button class="btn btn-outline-danger btn-sm" type="button">
+		                            		<i class="ci-trash me-2"></i>삭제
+		                            	</button>
+		                            </a>
+		                        </div>
+		                    </div>
+	                    	<% } %>
+	                    <% } %>
                 </section>
             </div>
         </div>

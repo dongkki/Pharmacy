@@ -26,6 +26,8 @@
     <!-- Vendor Styles including: Font Icons, Plugins, etc.-->
     <link rel="stylesheet" media="screen" href="<%=request.getContextPath() %>/views/vendor/simplebar/dist/simplebar.min.css" />
     <link rel="stylesheet" media="screen" href="<%=request.getContextPath() %>/views/vendor/tiny-slider/dist/tiny-slider.css" />
+    <link rel="stylesheet" media="screen" href="<%=request.getContextPath() %>/views/vendor/nouislider/dist/nouislider.min.css" />
+    <link rel="stylesheet" media="screen" href="<%=request.getContextPath() %>/views/vendor/drift-zoom/dist/drift-basic.min.css" />
     
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="<%=request.getContextPath() %>/views/css/theme.min.css">
@@ -99,8 +101,8 @@
                         <% if((loginPham == null) && (loginUser == null)){ %>
                         <ul class="navbar-nav ">
                             <li class="nav-item dropdown"><a class="nav-link fs-5 fw-bold" href="<%=request.getContextPath() %>/views/index.jsp">홈</a></li>
-                            <li class="nav-item dropdown"><a class="nav-link fs-5 fw-bold" href="<%=request.getContextPath() %>/views/search/searchpham.jsp">약국 검색</a></li>
-                            <li class="nav-item dropdown"><a class="nav-link fs-5 fw-bold" href="<%=request.getContextPath() %>/views/search/searchDrug">의약품 검색</a></li>
+                            <li class="nav-item dropdown"><a class="nav-link fs-5 fw-bold" href="<%=request.getContextPath() %>/views/search/searchpharm.jsp">약국 검색</a></li>
+                            <li class="nav-item dropdown"><a class="nav-link fs-5 fw-bold" href="<%=request.getContextPath() %>/views/search/searchDrug.jsp">의약품 검색</a></li>
                             <li class="nav-item dropdown"><a class="nav-link fs-5 fw-bold dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside">뉴스</a>
                                 <ul class="dropdown-menu">
                                     <li class="dropdown"><a class="dropdown-item " href="<%=request.getContextPath() %>/views/news/news.jsp">뉴스</a></li>
@@ -112,8 +114,8 @@
                         <% } else {%>
                         <ul class="navbar-nav ">
                             <li class="nav-item dropdown"><a class="nav-link fs-5 fw-bold" href="<%=request.getContextPath() %>/views/index.jsp">홈</a></li>
-                            <li class="nav-item dropdown"><a class="nav-link fs-5 fw-bold" href="<%=request.getContextPath() %>/views/search/searchpham.jsp">약국 검색</a></li>
-                            <li class="nav-item dropdown"><a class="nav-link fs-5 fw-bold" href="<%=request.getContextPath() %>/views/search/searchDrug">의약품 검색</a></li>
+                            <li class="nav-item dropdown"><a class="nav-link fs-5 fw-bold" href="<%=request.getContextPath() %>/views/search/searchpharm.jsp">약국 검색</a></li>
+                            <li class="nav-item dropdown"><a class="nav-link fs-5 fw-bold" href="<%=request.getContextPath() %>/views/search/searchDrug.jsp">의약품 검색</a></li>
                             <li class="nav-item dropdown"><a class="nav-link fs-5 fw-bold dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside">뉴스</a>
                                 <ul class="dropdown-menu">
                                     <li class="dropdown"><a class="dropdown-item " href="<%=request.getContextPath() %>/views/news/news.jsp">뉴스</a></li>
@@ -125,7 +127,7 @@
                                 <ul class="dropdown-menu">
                                     <li class="dropdown"><a class="dropdown-item " href="<%=request.getContextPath() %>/views/profile/account-profile.jsp">내 정보 수정</a></li>
                                     <li class="dropdown"><a class="dropdown-item " href="<%=request.getContextPath() %>/views/profile/account-wishlist_pharm.jsp">자주 찾는 약국</a></li>
-                                    <li class="dropdown"><a class="dropdown-item " href="<%=request.getContextPath() %>/views/profile/account-wishlist_drug.jsp">자주 찾는 의약품</a></li>
+                                    <li class="dropdown"><a class="dropdown-item " href="<%=request.getContextPath() %>/views/profile/account-wishlist_drug.do?id=<%=loginUser.getUser_id()%>">자주 찾는 의약품</a></li>
                                 </ul>
                             </li>
                         </ul>

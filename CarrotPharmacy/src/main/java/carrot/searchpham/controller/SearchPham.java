@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import carrot.service.PharmacyService;
 import carrot.vo.Pharmacy;
 
-@WebServlet("/searchpham.do")
+@WebServlet("/searchPham.do")
 public class SearchPham extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -38,7 +38,7 @@ public class SearchPham extends HttpServlet {
 		ArrayList<Pharmacy> pham = service.findPharmacyByName(name);
 		
 		req.setAttribute("pham", pham);
-		req.getRequestDispatcher("/views/search/searchPham.jsp").forward(req, resp);
+		req.getRequestDispatcher("/views/search/searchPharm.jsp").forward(req, resp);
 	}
 		
 }

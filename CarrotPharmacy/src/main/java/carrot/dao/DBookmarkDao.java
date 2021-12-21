@@ -1,22 +1,24 @@
 package carrot.dao;
 
+import static carrot.common.jdbc.JDBCTemplate.close;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.List;
 
-import static carrot.common.jdbc.JDBCTemplate.*;
 import carrot.vo.DBookmark;
 
 public class DBookmarkDao {
 	
 	//의약품 북마크 전체 조회 메소드
-	public ArrayList<DBookmark> searchAll(Connection connection, String id) {
+	public List<DBookmark> searchAll(Connection connection, String id) {
 		DBookmark dBookmark = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String query = "SELECT * FROM DBOOK_MARK JOIN DRUG USING(DRUG_CODE) JOIN USERS USING(USER_ID) WHERE USER_ID LIKE ?";
-		ArrayList<DBookmark> dBookmarks = new ArrayList<DBookmark>();
+		String query = "SELECT * FROM DBOOK_MARK JOIN USERS USING(USER_ID) WHERE USER_ID LIKE ?";
+		ArrayList<DBookmark> dBookmarks = new ArrayList<>();
 		
 		try {
 			pstmt = connection.prepareStatement(query);
@@ -25,14 +27,12 @@ public class DBookmarkDao {
 			
 			while(rs.next()==true) {
 				dBookmark = new DBookmark();
-				dBookmark.setDrug_code(rs.getString("DRUG_CODE"));
-				dBookmark.setUser_id(rs.getString("USER_ID"));
 				dBookmark.setDrug_name(rs.getString("DRUG_NAME"));
+				dBookmark.setDrug_manufactoror(rs.getString("DRUG_MANUFACTOROR"));
+				dBookmark.setDrug_effect(rs.getString("DRUG_EFFECT"));
 				dBookmarks.add(dBookmark);
 			}
-			if(rs.next() == true) {
-		
-			}
+			
 		} catch (Exception e) {
 			
 		} finally {

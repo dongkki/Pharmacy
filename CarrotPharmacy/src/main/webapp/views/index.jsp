@@ -6,4 +6,3 @@
 </section>
 
 <%@ include file="./footer.jsp" %>
-

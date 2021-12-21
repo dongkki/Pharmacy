@@ -55,7 +55,7 @@ public class DrugDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String query = "SELECT * FROM DRUG WHERE DRUG_NAME=?";
+		String query = "SELECT * FROM DRUG WHERE DRUG_NAME LIKE ?";
 		
 		try {
 			pstmt = connection.prepareStatement(query);
@@ -83,7 +83,45 @@ public class DrugDao {
 		return drug;
 	}
 	
-	public List<Drug> selectDrugManu(Connection connection, String selectDrugManu) {
+	public List<Drug> selectDrugName(Connection connection, String drugname) {
+		List<Drug> list = new ArrayList<Drug>();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String query = "SELECT * FROM DRUG WHERE DRUG_NAME LIKE ? ORDER BY 1";
+		
+		try {
+			pstmt = connection.prepareStatement(query);
+			pstmt.setString(1, "%"+drugname+"%");
+			rs = pstmt.executeQuery();
+
+			while (rs.next() == true) {
+				String drugCode = rs.getString("drug_code");
+				String drugName = rs.getString("drug_name");
+				String drugEffect = rs.getString("drug_effect");
+				String drugUsage = rs.getString("drug_usage");
+				String drugPrecaution = rs.getString("drug_precautions");
+				String drugHowStore = rs.getString("drug_how_store");
+				String drugManufactoror = rs.getString("drug_manufactoror");
+				String drugImage = rs.getString("drug_image");
+
+				Drug drug = new Drug(drugCode, drugName, drugEffect, drugUsage, drugPrecaution, drugHowStore, drugManufactoror, drugImage);
+				list.add(drug);
+			}
+			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+			try {
+				close(rs);
+				close(pstmt);
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return list;
+	}
+	
+
+	public List<Drug> selectDrugManu(Connection connection, String drugManu) {
 		List<Drug> list = new ArrayList<Drug>();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -91,7 +129,7 @@ public class DrugDao {
 		
 		try {
 			pstmt = connection.prepareStatement(query);
-			pstmt.setString(1, "%"+selectDrugManu+"%");
+			pstmt.setString(1, "%"+drugManu+"%");
 			rs = pstmt.executeQuery();
 
 			while (rs.next() == true) {
@@ -162,6 +200,7 @@ public class DrugDao {
 		}
 		return result;
 	}
+
 	
 }
 

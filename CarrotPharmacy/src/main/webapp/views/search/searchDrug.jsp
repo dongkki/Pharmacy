@@ -8,7 +8,6 @@
 
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript"></script>
-<script type="<%=request.getContextPath()%>/views/js/mapUI.js"></script>
 
 <%
 	List<Drug> list = new ArrayList<Drug>();
@@ -40,7 +39,7 @@
 				<div class="col-lg-6 col-md-8">
 					<div class="input-group input-group-lg flex-nowrap">
 						<i class="ci-search position-absolute top-50 translate-middle-y ms-3"></i>
-							<input class="form-control rounded-start" name="name" type="text" placeholder="의약품명 · 제조사 · 약 모양을 입력하세요.">
+							<input class="form-control rounded-start" name="name" type="text" placeholder="의약품명 입력하세요.">
 						<button class="btn btn-primary btn-lg fs-base home_search_btn" type="submit">검색</button>
 					</div>
 				</div>
@@ -55,9 +54,8 @@
 	<div class="bg-light shadow-lg rounded-3 p-4 mt-n5 mb-4">
 		<div class="d-flex justify-content-between align-items-center">
 			<div class="dropdown me-2">
-				<a class="btn btn-outline-secondary dropdown-toggle"
-					href="#shop-filters" data-bs-toggle="collapse"><i
-					class="ci-filter me-2"></i>Filters</a>
+				<a class="btn btn-outline-secondary dropdown-toggle" href="#shop-filters" data-bs-toggle="collapse">
+				<i class="ci-filter me-2"></i>Filters</a>
 			</div>
 			<div class="d-none d-sm-flex">
 				<% if(list == null || list.isEmpty()){ %>
@@ -77,7 +75,6 @@
                             <div class="card mb-grid-gutter">
                                 <div class="card-body px-4">
                                     <div class="widget widget-categories">
-                                        <h3 class="widget-title">카테고리</h3>
                                         <div class="accordion mt-n1" id="shop-categories">
                                             <!-- 제조사-->
                                             <div class="accordion-item">
@@ -86,7 +83,7 @@
                                                     <div class="accordion-body">
                                                         <div class="widget widget-links widget-filter">
                                                             <div class="input-group input-group-sm mb-2">
-                                                                <input class="widget-filter-search form-control rounded-end" type="text" placeholder="Search"><i class="ci-search position-absolute top-50 end-0 translate-middle-y fs-sm me-3"></i>
+                                                            <input class="widget-filter-search form-control rounded-end" name="manu" type="text" placeholder="Search"><i class="ci-search position-absolute top-50 end-0 translate-middle-y fs-sm me-3"></i>
                                                             </div>
                                                             <ul class="widget-list widget-filter-list pt-1" style="height: 10rem;" data-simplebar data-simplebar-auto-hide="false">
                                                                 <li class="widget-list-item widget-filter-item"><a class="widget-list-link d-flex justify-content-between align-items-center" href="#"><span class="widget-filter-item-text">모두보기</span><span class="fs-xs text-muted ms-3">2,548</span></a></li>
@@ -371,21 +368,31 @@
                                                                 <li class="widget-list-item widget-filter-item"><a class="widget-list-link d-flex justify-content-between align-items-center" href="#"><span class="widget-filter-item-text">화리약품(주)</span><span class="fs-xs text-muted ms-3">107</span></a></li>
                                                                 <li class="widget-list-item widget-filter-item"><a class="widget-list-link d-flex justify-content-between align-items-center" href="#"><span class="widget-filter-item-text">화일약품(주)</span><span class="fs-xs text-muted ms-3">93</span></a></li>
                                                                 <li class="widget-list-item widget-filter-item"><a class="widget-list-link d-flex justify-content-between align-items-center" href="#"><span class="widget-filter-item-text">환인제약(주)	</span><span class="fs-xs text-muted ms-3">93</span></a></li>
-                                                                
-
-
                                                             </ul>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!-- 효능,효과-->
-                                            <div class="accordion-item">
-                                                <h3 class="accordion-header"><a class="accordion-button collapsed" href="#accessories" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="accessories">효능,효과</a></h3>
-                                                <div class="accordion-collapse collapse" id="accessories" data-bs-parent="#shop-categories">
-                                                    <div class="accordion-body">
-                                                        <div class="widget widget-links">
-                                                            <ul class="widget-list widget-filter-list pt-1" style="height: 10rem;" data-simplebar data-simplebar-auto-hide="false">
+                                        </div>
+                                        <!-- accordion -->
+                                    </div>
+                                    <!-- widget -->
+                                </div>
+                                <!-- card-body -->
+                            </div>
+                            <!-- card -->
+                        </div>
+                        <!-- col-lg-6 -->
+                        <div class="col-lg-6 col-sm-6">
+                            <!-- 효능, 효과 -->
+                            <div class="card mb-grid-gutter">
+                                <div class="card-body px-4">
+                                    <div class="widget widget-filter">
+                                        <h3 class="widget-title">효능, 효과</h3>
+                                        <div class="input-group input-group-sm mb-2">
+                                            <input class="widget-filter-search form-control rounded-end pe-5" type="text" placeholder="Search"><i class="ci-search position-absolute top-50 end-0 translate-middle-y fs-sm me-3"></i>
+                                        </div>
+                                        <ul class="widget-list widget-filter-list pt-1" style="height: 10rem;" data-simplebar data-simplebar-auto-hide="fl">
                                                                 <li class="widget-list-item"><a class="widget-list-link d-flex justify-content-between align-items-center" href="#"><span>항악성종양제</span><span class="fs-xs text-muted ms-3">920</span></a></li>
                                                                 <li class="widget-list-item"><a class="widget-list-link d-flex justify-content-between align-items-center" href="#"><span>소화기관용약</span><span class="fs-xs text-muted ms-3">364</span></a></li>
                                                                 <li class="widget-list-item"><a class="widget-list-link d-flex justify-content-between align-items-center" href="#"><span>최면진정제</span><span class="fs-xs text-muted ms-3">405</span></a></li>
@@ -495,91 +502,6 @@
                                                                 <li class="widget-list-item"><a class="widget-list-link d-flex justify-content-between align-items-center" href="#"><span>백신류</span><span class="fs-xs text-muted ms-3">20</span></a></li>
                                                                 
                                                             </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- accordion -->
-                                    </div>
-                                    <!-- widget -->
-                                </div>
-                                <!-- card-body -->
-                            </div>
-                            <!-- card -->
-                        </div>
-                        <!-- col-lg-6 -->
-                        <div class="col-lg-6 col-sm-6">
-                            <!-- 약 모양 -->
-                            <div class="card mb-grid-gutter">
-                                <div class="card-body px-4">
-                                    <div class="widget widget-filter">
-                                        <h3 class="widget-title">약 모양</h3>
-                                        <div class="input-group input-group-sm mb-2">
-                                            <input class="widget-filter-search form-control rounded-end pe-5" type="text" placeholder="Search"><i class="ci-search position-absolute top-50 end-0 translate-middle-y fs-sm me-3"></i>
-                                        </div>
-                                        <ul class="widget-list widget-filter-list list-unstyled pt-1" style="max-height: 11.5rem;" data-simplebar data-simplebar-auto-hide="false">
-                                            <li class="widget-filter-item d-flex justify-content-between align-items-center mb-1">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="size-s">
-                                                    <label class="form-check-label widget-filter-item-text" for="size-s">원형</label>
-                                                </div><span class="fs-xs text-muted">57</span>
-                                            </li>
-                                            <li class="widget-filter-item d-flex justify-content-between align-items-center mb-1">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="size-xl">
-                                                    <label class="form-check-label widget-filter-item-text" for="size-xl">장방형</label>
-                                                </div><span class="fs-xs text-muted">46</span>
-                                            </li>
-                                            <li class="widget-filter-item d-flex justify-content-between align-items-center mb-1">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="size-39">
-                                                    <label class="form-check-label widget-filter-item-text" for="size-39">타원형</label>
-                                                </div><span class="fs-xs text-muted">112</span>
-                                            </li>
-                                            <li class="widget-filter-item d-flex justify-content-between align-items-center mb-1">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="size-40">
-                                                    <label class="form-check-label widget-filter-item-text" for="size-40">팔각형</label>
-                                                </div><span class="fs-xs text-muted">85</span>
-                                            </li>
-                                            <li class="widget-filter-item d-flex justify-content-between align-items-center mb-1">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="size-xl">
-                                                    <label class="form-check-label widget-filter-item-text" for="size-xl">오각형</label>
-                                                </div><span class="fs-xs text-muted">46</span>
-                                            </li>
-                                            <li class="widget-filter-item d-flex justify-content-between align-items-center mb-1">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="size-39">
-                                                    <label class="form-check-label widget-filter-item-text" for="size-39">삼각형</label>
-                                                </div><span class="fs-xs text-muted">112</span>
-                                            </li>
-                                            <li class="widget-filter-item d-flex justify-content-between align-items-center mb-1">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="size-40">
-                                                    <label class="form-check-label widget-filter-item-text" for="size-40">기타</label>
-                                                </div><span class="fs-xs text-muted">85</span>
-                                            </li>
-                                            <li class="widget-filter-item d-flex justify-content-between align-items-center mb-1">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="size-xl">
-                                                    <label class="form-check-label widget-filter-item-text" for="size-xl">사각형</label>
-                                                </div><span class="fs-xs text-muted">46</span>
-                                            </li>
-                                            <li class="widget-filter-item d-flex justify-content-between align-items-center mb-1">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="size-39">
-                                                    <label class="form-check-label widget-filter-item-text" for="size-39">육각형</label>
-                                                </div><span class="fs-xs text-muted">112</span>
-                                            </li>
-                                            <li class="widget-filter-item d-flex justify-content-between align-items-center mb-1">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="size-40">
-                                                    <label class="form-check-label widget-filter-item-text" for="size-40">반원형</label>
-                                                </div><span class="fs-xs text-muted">85</span>
-                                            </li>
-                                        </ul>
                                     </div>
                                     <!-- widget -->
                                 </div>
@@ -611,7 +533,8 @@
 				<ul class="widget-list widget-filter-list pt-1"	style="height: 55rem;" data-simplebar data-simplebar-auto-hide="false">
 					<!-- 약 목록1 -->
 					<% if(list == null || list.isEmpty()){ %> 
-						<li class="widget-list-item widget-filter-item"> 조회된 게시글이 없습니다.</li>
+						<li class="widget-list-item widget-filter-item"> 조회된 게시글이 없습니다. </li>
+						<li class="widget-list-item widget-filter-item"> 원하시는 의약품을 검색해주세요.</li>
 					<% } else { %>
 						<% if(loginUser != null) { %>
 							<% for(Drug drug : list){ %>
@@ -800,29 +723,4 @@
 
 
 <%@ include file="/views/footer.jsp"%>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
