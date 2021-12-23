@@ -1,4 +1,4 @@
-package carrot.wishlist.controller;
+package carrot.wishlist.drug.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -13,7 +13,7 @@ import carrot.service.DBookmarkService;
 import carrot.vo.DBookmark;
 
 @WebServlet("/views/profile/account-wishlist_drug.do")
-public class WishListSelect extends HttpServlet{
+public class WishListDrugSelect extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
 	private DBookmarkService service = new DBookmarkService();

@@ -51,7 +51,7 @@
                             </div>
                             <ul class="list-unstyled mb-0">
                                 <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="<%=request.getContextPath() %>/views/profile/account-profile.jsp"><i class="ci-user opacity-60 me-2"></i>내정보</a></li>
-	                            <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="<%=request.getContextPath() %>/views/profile/account-wishlist_drug.do?id=<%=loginUser.getUser_id()%>"><i class="ci-heart opacity-60 me-2"></i>즐겨찾기_약<span class="fs-sm text-muted ms-auto"><%=list.size() %></span></a></li>
+	                            <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="<%=request.getContextPath() %>/views/profile/account-wishlist_drug.do?id=<%=loginUser.getUser_id()%>"><i class="ci-heart opacity-60 me-2"></i>즐겨찾기_약</a></li>
                                 <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="<%=request.getContextPath() %>/views/profile/account-wishlist_pharm.jsp"><i class="ci-heart opacity-60 me-2"></i>즐겨찾기_약국<span class="fs-sm text-muted ms-auto">3</span></a></li>
                                 <li class="mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="index.html"><i class="ci-sign-out opacity-60 me-2"></i>회원 탈퇴</a></li>
                             </ul>
@@ -80,7 +80,7 @@
 		                            </div>
 		                        </div>
 		                        <div class="pt-2 ps-sm-3 mx-auto mx-sm-0 text-center">
-		                            <a href="<%=request.getContextPath() %>/views/profile/account-wishlist_drug.do?name=<%=mark.getDrug_name()%>">
+		                            <a href="<%=request.getContextPath() %>/views/profile/wishlist_drug_del.do?drugname=<%=mark.getDrug_name()%>">
 		                            	<button class="btn btn-outline-danger btn-sm" type="button">
 		                            		<i class="ci-trash me-2"></i>삭제
 		                            	</button>

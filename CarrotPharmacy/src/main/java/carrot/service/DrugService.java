@@ -36,6 +36,12 @@ public class DrugService {
 		List<Drug> result = dao.selectDrugManu(connection, drugManu);
 		return result;
 	}
+	
+	public List<Drug> selectDrugEffect(String effect) {
+		Connection connection = getConnection();
+		List<Drug> result = dao.selectDrugEffect(connection, effect);
+		return result;
+	}
 
 	// 의약품 정보 테이블의 내용들을 전부 삭제해 초기화 하는 메소드
 	public int init() {

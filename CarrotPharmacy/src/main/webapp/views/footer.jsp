@@ -24,7 +24,7 @@
 	<script src="<%=request.getContextPath() %>/views/vendor/drift-zoom/dist/Drift.min.js "></script>
 
 	<!-- Main theme script-->
-	<script src="<%=request.getContextPath() %>/views/js/theme.min.js "></script>
+	<script src="<%=request.getContextPath() %>/views/js/theme.min.js"></script>
    
 </body>
 </html>

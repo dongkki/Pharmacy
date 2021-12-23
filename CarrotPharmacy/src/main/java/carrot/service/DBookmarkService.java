@@ -25,7 +25,24 @@ public class DBookmarkService {
 	public int addDBookmark(DBookmark dbookmark) {
 		Connection connection = getConnection();
 		int dBookmark = dao.addDBookmark(connection, dbookmark);
+		if(dBookmark > 0) {
+			commit(connection);
+		}else {
+			rollback(connection);
+		}
 		close(connection);
+		return dBookmark;
+	}
+
+	// 의약품 북마크 삭제 메소드
+	public int deleteDbookmark(String code) {
+		Connection connection = getConnection();
+		int dBookmark = dao.deleteDBookmark(connection, code);
+		if(dBookmark > 0) {
+			commit(connection);
+		}else {
+			rollback(connection);
+		}
 		return dBookmark;
 	}
 	

@@ -68,7 +68,7 @@
                                 	</tr>
                                 	<tr>
                                 		<td>
-			                               	<a class="btn btn-primary btn-shadow mx-2" href=""> 
+			                               	<a class="btn btn-primary btn-shadow mx-2" href="<%=request.getContextPath() %>/views/profile/account-profile.jsp"> 
 			                               	<i class="ci-user-circle me-2"></i>Info</a>
                                			</td>
                                			<td>
@@ -84,7 +84,7 @@
                                		</tr>
                                		<tr>
                                			<td>
-			                               	<a class="btn btn-primary btn-shadow mx-2" href=""> 
+			                               	<a class="btn btn-primary btn-shadow mx-2" href="<%=request.getContextPath() %>/views/profile/account-profile.jsp"> 
 			                               	<i class="ci-user-circle me-2"></i>Info</a>
                                			</td>
                                			<td>

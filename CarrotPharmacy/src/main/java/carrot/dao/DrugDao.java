@@ -119,7 +119,6 @@ public class DrugDao {
 		}
 		return list;
 	}
-	
 
 	public List<Drug> selectDrugManu(Connection connection, String drugManu) {
 		List<Drug> list = new ArrayList<Drug>();
@@ -157,6 +156,44 @@ public class DrugDao {
 		}
 		return list;
 	}
+	
+	public List<Drug> selectDrugEffect(Connection connection, String effect) {
+		List<Drug> list = new ArrayList<Drug>();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String query = "SELECT * FROM DRUG WHERE DRUG_EFFECT LIKE ? ORDER BY 1";
+		
+		try {
+			pstmt = connection.prepareStatement(query);
+			pstmt.setString(1, "%"+effect+"%");
+			rs = pstmt.executeQuery();
+			
+			while (rs.next() == true) {
+				String drugCode = rs.getString("drug_code");
+				String drugName = rs.getString("drug_name");
+				String drugEffect = rs.getString("drug_effect");
+				String drugUsage = rs.getString("drug_usage");
+				String drugPrecaution = rs.getString("drug_precautions");
+				String drugHowStore = rs.getString("drug_how_store");
+				String drugManufactoror = rs.getString("drug_manufactoror");
+				String drugImage = rs.getString("drug_image");
+				
+				Drug drug = new Drug(drugCode, drugName, drugEffect, drugUsage, drugPrecaution, drugHowStore, drugManufactoror, drugImage);
+				list.add(drug);
+			}
+			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+			try {
+				close(rs);
+				close(pstmt);
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return list;
+	}
+	
 	
 	public int insertDrug(Connection connection, Drug drug) {
 		int result = 0;
@@ -200,7 +237,6 @@ public class DrugDao {
 		}
 		return result;
 	}
-
 	
 }
 

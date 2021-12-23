@@ -28,13 +28,14 @@ public class DBookmarkDao {
 			while(rs.next()==true) {
 				dBookmark = new DBookmark();
 				dBookmark.setDrug_name(rs.getString("DRUG_NAME"));
+				dBookmark.setDrug_code(rs.getString("DRUG_CODE"));
 				dBookmark.setDrug_manufactoror(rs.getString("DRUG_MANUFACTOROR"));
 				dBookmark.setDrug_effect(rs.getString("DRUG_EFFECT"));
 				dBookmarks.add(dBookmark);
 			}
 			
 		} catch (Exception e) {
-			
+			e.printStackTrace();
 		} finally {
 			close(pstmt);
 			close(rs);
@@ -47,7 +48,6 @@ public class DBookmarkDao {
 	public int addDBookmark(Connection connection, DBookmark dbookmark) {
 		int result = 0;
 		PreparedStatement pstmt = null;
-		ResultSet rs = null;
 		String query = "INSERT INTO DBOOK_MARK VALUES (?, ?, ?, ?, ?)";
 		
 		try {
@@ -59,47 +59,30 @@ public class DBookmarkDao {
 			pstmt.setString(5, dbookmark.getDrug_effect());
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
-			
+			e.printStackTrace();
 		} finally {
 			close(pstmt);
-			close(rs);
 		}
 		return result;
 	}
 	
 	
-	
-	
 	//의약품 북마크 삭제 메소드
-	public int deleteDBookmark(Connection connection, String drugCode, String id) {
+	public int deleteDBookmark(Connection connection, String drugname) {
 		int result = 0;
 		PreparedStatement pstmt = null;
-		String query = "DELETE FROM DBOOK_MARK WHERE DRUG_CODE = ? AND USER_ID = ?";
+		String query = "DELETE FROM DBOOK_MARK WHERE DRUG_NAME = ?";
 		
 		try {
 			pstmt = connection.prepareStatement(query);
-			pstmt.setString(1, drugCode);
-			pstmt.setString(2, id);
+			pstmt.setString(1, drugname);
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
-
+			e.printStackTrace();
 		}finally {
 			close(pstmt);
 		}
 		return result;
 	}
 
-/*
-	public static void main(String[] args) {
-		Connection connection = getConnection();
-		DBookmarkDao dBookmarkDao = new DBookmarkDao();
-
-		//ArrayList<DBookmark> test = dBookmarkDao.searchAll(connection, "users_khtest");
-		//int test = dBookmarkDao.addDBookmark(connection, "2", "users_khtest", "10.0");
-		//int test = dBookmarkDao.deleteDBookmark(connection, "1", "users_khtest");
-		//int test =  dBookmarkDao.updateScore(connection, "1", "10.0");
-		//commit(connection);	//을 해야지만 데이터가 DB에 저장된다. 안하면 DB에는 저장 안됨.
-		System.out.println(test);
-	}
-*/
 }
