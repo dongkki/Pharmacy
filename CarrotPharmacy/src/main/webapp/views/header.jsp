@@ -101,7 +101,7 @@
                         <% if((loginPham == null) && (loginUser == null)){ %>
                         <ul class="navbar-nav ">
                             <li class="nav-item dropdown"><a class="nav-link fs-5 fw-bold" href="<%=request.getContextPath() %>/views/index.jsp">홈</a></li>
-                            <li class="nav-item dropdown"><a class="nav-link fs-5 fw-bold" href="<%=request.getContextPath() %>/views/search/searchpharm.jsp">약국 검색</a></li>
+                            <li class="nav-item dropdown"><a class="nav-link fs-5 fw-bold" href="<%=request.getContextPath() %>/views/search/search_pharmacy.jsp">약국 검색</a></li>
                             <li class="nav-item dropdown"><a class="nav-link fs-5 fw-bold" href="<%=request.getContextPath() %>/views/search/searchDrug.jsp">의약품 검색</a></li>
                             <li class="nav-item dropdown"><a class="nav-link fs-5 fw-bold dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside">뉴스</a>
                                 <ul class="dropdown-menu">
@@ -114,7 +114,7 @@
                         <% } else {%>
                         <ul class="navbar-nav ">
                             <li class="nav-item dropdown"><a class="nav-link fs-5 fw-bold" href="<%=request.getContextPath() %>/views/index.jsp">홈</a></li>
-                            <li class="nav-item dropdown"><a class="nav-link fs-5 fw-bold" href="<%=request.getContextPath() %>/views/search/searchpharm.jsp">약국 검색</a></li>
+                            <li class="nav-item dropdown"><a class="nav-link fs-5 fw-bold" href="<%=request.getContextPath() %>/views/search/search_pharmacy.jsp">약국 검색</a></li>
                             <li class="nav-item dropdown"><a class="nav-link fs-5 fw-bold" href="<%=request.getContextPath() %>/views/search/searchDrug.jsp">의약품 검색</a></li>
                             <li class="nav-item dropdown"><a class="nav-link fs-5 fw-bold dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside">뉴스</a>
                                 <ul class="dropdown-menu">

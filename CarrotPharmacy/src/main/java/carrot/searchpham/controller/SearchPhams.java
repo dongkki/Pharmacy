@@ -1,5 +1,4 @@
 package carrot.searchpham.controller;
-
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -9,14 +8,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import carrot.service.PharmacyService;
-import carrot.vo.Pharmacy;
+import carrot.service.SearchPhamService;
+import carrot.vo.SearchPham;
+
 
 @WebServlet("/searchPham.do")
-public class SearchPham extends HttpServlet {
+public class SearchPhams extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	PharmacyService service = new PharmacyService();
+	SearchPhamService service = new SearchPhamService();
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -26,19 +26,22 @@ public class SearchPham extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("get");
 		
 		req.setCharacterEncoding("UTF-8");
 		resp.setCharacterEncoding("UTF-8");
 		
-		String name = req.getParameter("search_box");
-		String address = req.getParameter("address");
-		System.out.println(name+","+address);
-		//사용자가 입력한 데이터 가져옴()
-		ArrayList<Pharmacy> pham = service.findPharmacyByName(name);
+		String name = req.getParameter("name");
+		String gu = req.getParameter("gu");
+		System.out.println(name+","+gu);
 		
-		req.setAttribute("pham", pham);
-		req.getRequestDispatcher("/views/search/searchPharm.jsp").forward(req, resp);
+		ArrayList<SearchPham> spl = service.searchPhamLists(name, gu);
+		System.out.println(spl);
+		
+		req.setAttribute("pham", spl);
+		req.getRequestDispatcher("/views/search/search_pharmacy.jsp").forward(req, resp);
 	}
+	
+	
+
 		
 }

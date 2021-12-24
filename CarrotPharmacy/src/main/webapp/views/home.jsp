@@ -1,7 +1,14 @@
+<%@page import="carrot.vo.SearchPham"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
 <%@ include file="./header.jsp"%>
+
+<%
+	ArrayList<SearchPham> pham = new ArrayList<SearchPham>();
+	pham = (ArrayList<SearchPham>)request.getAttribute("pham");
+%>
 
         <!-- Hero section-->
         <!-- home -->
@@ -19,16 +26,17 @@
                         </div>
                         <div class="row mb-3 mb-sm-3">
                             <div class="col-lg-12 col-md-8">
-                                <div class="input-group input-group-lg flex-nowrap shadow-sm"><i class="ci-search position-absolute top-50 translate-middle-y ms-3"></i>
-                                    <input class="form-control rounded-start" type="text" placeholder="약국명을 검색하세요.">
-                                    <button class="btn btn-secondary btn-lg fs-base home_search_btn" type="button">검색</button>
-                                </div>
+                                <form action="<%=request.getContextPath()%>/searchPhamHome.do" method="get">
+                               		<div class="input-group input-group-lg flex-nowrap shadow-sm"><i class="ci-search position-absolute top-50 translate-middle-y ms-3"></i>
+                                    	<input class="form-control rounded-start" type="text" name="name" placeholder="약국명을 검색하세요.">
+                                    	<button class="btn btn-secondary btn-lg fs-base home_search_btn" type="submit">검색</button>
+                                	</div>
+                                </form>
                             </div>
                         </div>
                     </div>
 
                     <aside class="col-md-5 d-none d-lg-block px-xl-3 offset-1">
-                        <!-- <iframe src="img/backvideo.mp4?autoplay=0&mute=0" height="299" width="0" frameborder="0" scrolling="no"></iframe>  -->
                         <video autoplay muted loop style="width: 100%;">
                             <source src="img/backvideo.mp4">
                         </video>

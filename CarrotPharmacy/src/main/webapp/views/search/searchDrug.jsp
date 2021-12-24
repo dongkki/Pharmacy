@@ -293,7 +293,7 @@
 												<%= drug.getDrugName() %>
 											</h3>
 											<h5 class="product-title fs-base">
-												<small>▶ <%= drug.getDrugPrecautions() %></small>
+												<small>▶ <%= drug.getDrugHowStore() %></small>
 											</h5>
 										</div>
 									</div>
