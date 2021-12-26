@@ -1,7 +1,7 @@
 package carrot.vo;
 
 public class QnA {
-	private String q_num;
+	private int q_num;
 	private String pham_no;
 	private String q_name;
 	private String q_title;
@@ -11,7 +11,7 @@ public class QnA {
 		super();
 	}
 
-	public QnA(String q_num, String pham_no, String q_name, String q_title, String q_contents) {
+	public QnA(int q_num, String pham_no, String q_name, String q_title, String q_contents) {
 		super();
 		this.q_num = q_num;
 		this.pham_no = pham_no;
@@ -20,11 +20,11 @@ public class QnA {
 		this.q_contents = q_contents;
 	}
 
-	public String getQ_num() {
+	public int getQ_num() {
 		return q_num;
 	}
 
-	public void setQ_num(String q_num) {
+	public void setQ_num(int q_num) {
 		this.q_num = q_num;
 	}
 
@@ -62,7 +62,10 @@ public class QnA {
 
 	@Override
 	public String toString() {
-		return "QNA [q_num=" + q_num + ", pham_no=" + pham_no + ", q_name=" + q_name + ", q_title=" + q_title
+		return "QnA [q_num=" + q_num + ", pham_no=" + pham_no + ", q_name=" + q_name + ", q_title=" + q_title
 				+ ", q_contents=" + q_contents + "]";
 	}
+
+	
+	
 }

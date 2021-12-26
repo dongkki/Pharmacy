@@ -7,7 +7,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import carrot.common.jdbc.JDBCTemplate;
 import carrot.vo.SearchPham;
 
 public class SearchPhamDao {

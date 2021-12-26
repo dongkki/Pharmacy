@@ -1,6 +1,6 @@
 package carrot.dao;
 
-import static carrot.common.jdbc.JDBCTemplate.*;
+import static carrot.common.jdbc.JDBCTemplate.close;
 
 import java.io.FileReader;
 import java.sql.Connection;
@@ -13,76 +13,21 @@ import java.util.Properties;
 import carrot.vo.QnA;
 
 public class QnADao {
-	private Connection conn = null;
-	private Properties prop = null;
-	
-	public QnADao(Connection conn) {
-		this.conn = conn;
-		
-		prop = new Properties();
-		FileReader fr;
-		try {
-			fr = new FileReader("resources/carrot-query.properties");
-			prop.load(fr);
-			fr.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public void setConn(Connection conn) {
-		this.conn = conn;
-	}
-	
-	public List<QnA> selectQnaQnum(String searchQnaQnum){
+
+	public List<QnA> selectQnaPhamNo(Connection connection, String searchQnaPhamNo) {
 		List<QnA> list = new ArrayList<QnA>();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
 		try {
-			String sql = prop.getProperty("selectQnAQNum");
+			String query = "SELECT * FROM QNA JOIN PHARMACY USING(PHAM_NO) WHERE PHAM_NO LIKE ?";
 
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, "%"+searchQnaQnum+"%");
+			pstmt = connection.prepareStatement(query);
+			pstmt.setString(1, "%" + searchQnaPhamNo + "%");
 			rs = pstmt.executeQuery();
 
 			while (rs.next() == true) {
-				String q_num = rs.getString("q_num");
-				String pham_no = rs.getString("pham_no");
-				String q_name = rs.getString("q_name");
-				String q_title = rs.getString("q_title");
-				String q_contents = rs.getString("q_contents");
-
-				QnA qna = new QnA(q_num, pham_no, q_name, q_title, q_contents);
-				list.add(qna);
-			}
-			return list;
-		} catch (Exception e) {
-			e.printStackTrace();
-			try {
-				close(rs);
-				close(pstmt);
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
-		}
-		return list;
-	}
-	
-	public List<QnA> selectQnaPhamNo(String searchQnaPhamNo){
-		List<QnA> list = new ArrayList<QnA>();
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-
-		try {
-			String sql = prop.getProperty("selectQnAPhamNo");
-
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, "%"+searchQnaPhamNo+"%");
-			rs = pstmt.executeQuery();
-
-			while (rs.next() == true) {
-				String q_num = rs.getString("q_num");
+				int q_num = rs.getInt("q_num");
 				String pham_no = rs.getString("pham_no");
 				String q_name = rs.getString("q_name");
 				String q_title = rs.getString("q_title");
@@ -104,41 +49,29 @@ public class QnADao {
 		return list;
 	}
 
-	public List<QnA> selectQnaQname(String searchQnaQname){
-		List<QnA> list = new ArrayList<QnA>();
+	public int insertQna(Connection connection, QnA qna) {
+		int result = 0;
 		PreparedStatement pstmt = null;
-		ResultSet rs = null;
+		String query = "INSERT INTO QNA(q_num, pham_no, q_name, q_title, q_contents) VALUES (Q_NUM_SEQ.NEXTVAL,?,?,?,?)";
 
 		try {
-			String sql = prop.getProperty("selectQnAQName");
-
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, "%"+searchQnaQname+"%");
-			rs = pstmt.executeQuery();
-
-			while (rs.next() == true) {
-				String q_num = rs.getString("q_num");
-				String pham_no = rs.getString("pham_no");
-				String q_name = rs.getString("q_name");
-				String q_title = rs.getString("q_title");
-				String q_contents = rs.getString("q_contents");
-
-				QnA qna = new QnA(q_num, pham_no, q_name, q_title, q_contents);
-				list.add(qna);
-			}
-			return list;
+			pstmt = connection.prepareStatement(query);
+			pstmt.setString(1, qna.getPham_no());
+			pstmt.setString(2, qna.getQ_name());
+			pstmt.setString(3, qna.getQ_title());
+			pstmt.setString(4, qna.getQ_contents());
+			result = pstmt.executeUpdate();
+			return result;
 		} catch (Exception e) {
-			e.printStackTrace();
 			try {
-				close(rs);
 				close(pstmt);
 			} catch (Exception e2) {
-				e2.printStackTrace();
 			}
 		}
-		return list;
+		return result;
+
 	}
-	
+
 //	public static void main(String[] args) {
 //		Connection connection = getConnection();
 //		QnADao QnADao = new QnADao(connection);

@@ -16,7 +16,7 @@
 <%
 	ArrayList<SearchPham> pham = new ArrayList<SearchPham>();
 	pham = (ArrayList<SearchPham>)request.getAttribute("pham");
-%>
+	%>
 
 <!-- used for shop templates with filters on top-->
 <div class="bg-orange pt-4 pb-5 shadow-sm">
@@ -36,7 +36,8 @@
 				<h1 class="h3  text-light fw-bolder mb-0">약국 검색</h1>
 			</div>
 		</div>
-		<form action="<%=request.getContextPath()%>/searchPham.do" method="get">
+		<form action="<%=request.getContextPath()%>/searchPham.do"
+			method="get">
 			<div class="row mt-4 mb-n2">
 				<div class="col-lg-6 col-md-8">
 					<div class="input-group input-group-lg flex-nowrap shadow-sm">
@@ -98,6 +99,7 @@
 											<option>강서구</option>
 											<option>강서구</option>
 										</select>
+										</form>
 									</div>
 									<!-- ul-li-a태그 -->
 
@@ -303,6 +305,7 @@
 		<div class="col-lg-1"></div>
 	</div>
 </div>
+</main>
 
 
 <%@ include file="/views/footer.jsp"%>
