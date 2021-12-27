@@ -7,12 +7,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import carrot.common.jdbc.JDBCTemplate;
 import carrot.vo.Review;
 
 public class ReviewDao {
-	
-	public ArrayList<Review> searchReviewList(Connection connection, String phamNo){
+
+	public ArrayList<Review> searchReviewList(Connection connection, String phamNo) {
 		Review review = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -22,37 +21,37 @@ public class ReviewDao {
 			pstmt = connection.prepareStatement(query);
 			pstmt.setString(1, phamNo);
 			rs = pstmt.executeQuery();
-			
-			while(rs.next()==true) {
-			review = new Review();
-			review.setRe_num(rs.getInt("RE_NUM"));
-			review.setPham_no(rs.getString("PHAM_NO"));
-			review.setRe_id(rs.getString("RE_ID"));
-			review.setRe_contents(rs.getString("RE_CONTENTS"));
-			review.setCreate_date(rs.getDate("CREATE_DATE"));
-			reviews.add(review);
+
+			while (rs.next() == true) {
+				review = new Review();
+				review.setRe_num(rs.getInt("RE_NUM"));
+				review.setPham_no(rs.getString("PHAM_NO"));
+				review.setRe_id(rs.getString("RE_ID"));
+				review.setRe_contents(rs.getString("RE_CONTENTS"));
+				review.setCreate_date(rs.getDate("CREATE_DATE"));
+				reviews.add(review);
 			}
 		} catch (Exception e) {
-		}finally {
+		} finally {
 			close(pstmt);
 			close(rs);
 		}
 		return reviews;
 	}
-	
+
 	public Review selectByRenum(Connection connection, int reNum) {
 		Review review = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String query = "SELECT * FROM REVIEW WHERE RE_NUM =?";
-		
+
 		try {
 			pstmt = connection.prepareStatement(query);
-			pstmt.setInt(1,reNum);
+			pstmt.setInt(1, reNum);
 			rs = pstmt.executeQuery();
-			
-			while(rs.next()==true) {
-				review= new Review();
+
+			while (rs.next() == true) {
+				review = new Review();
 				review.setRe_num(rs.getInt("RE_NUM"));
 				review.setPham_no(rs.getString("PHAM_NO"));
 				review.setRe_id(rs.getString("RE_ID"));
@@ -60,15 +59,15 @@ public class ReviewDao {
 				review.setCreate_date(rs.getDate("CREATE_DATE"));
 			}
 		} catch (Exception e) {
-		}finally {
+		} finally {
 			close(pstmt);
 			close(rs);
 		}
-		
+
 		return review;
 	}
-	
-	public int updateContents(Connection connection, int reNum ,String content) {
+
+	public int updateContents(Connection connection, int reNum, String content) {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		String query = null;
@@ -79,13 +78,13 @@ public class ReviewDao {
 			pstmt.setInt(2, reNum);
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
-		}finally {
+		} finally {
 			close(pstmt);
 		}
 		return result;
 	}
-	
-	public int insertReview(Connection connection,String phamNo, String name, String content ) {
+
+	public int insertReview(Connection connection, String phamNo, String name, String content) {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		String query = "INSERT INTO REVIEW VALUES(RE_NUM_SEQ.NEXTVAL,?,?,?,DEFAULT)";
@@ -97,31 +96,32 @@ public class ReviewDao {
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception
-		}finally {
+		} finally {
 			close(pstmt);
 		}
 		return result;
 	}
-	
+
 	public int deleteReview(Connection connection, int reNum) {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		String query = null;
-		
+
 		try {
 			query = "DELETE REVIEW WHERE RE_NUM=?";
 			pstmt = connection.prepareStatement(query);
-			
+
 			pstmt.setInt(1, reNum);
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
-		}finally {
+		} finally {
 			close(pstmt);
 		}
-		
+
 		return result;
-		
+
 	}
+
 	public static void main(String[] args) {
 		Connection connection = getConnection();
 		ReviewDao dao = new ReviewDao();
@@ -129,40 +129,3 @@ public class ReviewDao {
 		System.out.println(rw);
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -14,7 +14,7 @@ import carrot.vo.QnA;
 public class QnAService {
 	private static QnADao dao = new QnADao();
 
-	public static List<QnA> selectQnaPhamNo(String searchQnaPhamNo){
+	public List<QnA> selectQnaPhamNo(String searchQnaPhamNo){
 		Connection connection  = getConnection();
 		List<QnA> list = dao.selectQnaPhamNo(connection, searchQnaPhamNo);
 		close(connection);

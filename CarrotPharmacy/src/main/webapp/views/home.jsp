@@ -1,14 +1,7 @@
-<%@page import="carrot.vo.SearchPham"%>
-<%@page import="java.util.ArrayList"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 
 <%@ include file="./header.jsp"%>
-
-<%
-	ArrayList<SearchPham> pham = new ArrayList<SearchPham>();
-	pham = (ArrayList<SearchPham>)request.getAttribute("pham");
-%>
 
         <!-- Hero section-->
         <!-- home -->
@@ -37,8 +30,9 @@
                     </div>
 
                     <aside class="col-md-5 d-none d-lg-block px-xl-3 offset-1">
+                        <!-- <iframe src="img/backvideo.mp4?autoplay=0&mute=0" height="299" width="0" frameborder="0" scrolling="no"></iframe>  -->
                         <video autoplay muted loop style="width: 100%;">
-                            <source src="img/backvideo.mp4">
+                            <source src="<%=request.getContextPath() %>/views/img/backvideo.mp4">
                         </video>
                     </aside>
 
@@ -49,29 +43,27 @@
         <!-- section2 -->
         <section class="container py-3 mt-lg-4 py-sm-4 col-8" id="cuisine">
             <div class="row pb-lg-0 d-flex justify-content-lg-between">
-
                 <div class="col-md-2-3 col-sm-6 mb-3">
-                    <a class="card border-0 home_btn_1 " href="account-wishlist_pharm.html">
+	            	<% if((loginPham == null) && (loginUser == null)){ %>
+	                    <a class="card border-0 home_btn_1 " href="<%=request.getContextPath() %>/views/user/loginUser.jsp">
+	            	<% } else {%>
+	                    <a class="card border-0 home_btn_1 " href="<%=request.getContextPath()%>/views/profile/account-wishlist_pharm.jsp">
+	             	<% } %>
+                    <div class="card-body py-1 text-center">
+                        <h3 class="h5 mt-1 icon_size"> <i class="far fa-bookmark"></i></h3>
+                        <span class="small">즐겨찾기</span>
+                    </div> </a>
+                </div>
+                <div class="col-md-2-3 col-sm-6 mb-3">
+                    <a class="card border-0 home_btn_2 shadow-sm" href="<%=request.getContextPath() %>/views/search/search_pharmacy.jsp">
                         <div class="card-body py-1 text-center">
-                            <h3 class="h5 mt-1 icon_size">
-                                <i class="far fa-bookmark"></i>
-                            </h3>
-                            <span class="small">즐겨찾기</span>
+                            <h3 class="h5 mt-1 text_color_white icon_size"><i class="fas fa-clinic-medical"></i></h3>
+                            <span class="small text_color_white">약국 검색</span>
                         </div>
                     </a>
                 </div>
                 <div class="col-md-2-3 col-sm-6 mb-3">
-                    <a class="card border-0 home_btn_2 shadow-sm" href="pharm_search.html">
-                        <div class="card-body py-1 text-center">
-                            <h3 class="h5 mt-1 text_color_white icon_size">
-                                <i class="fas fa-clinic-medical"></i>
-                            </h3>
-                            <span class="small text_color_white">24시 약국</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-2-3 col-sm-6 mb-3">
-                    <a class="card border-0 home_btn_3 shadow-sm" href="drug_search_name.html">
+                    <a class="card border-0 home_btn_3 shadow-sm" href="<%=request.getContextPath() %>/views/search/searchDrug.jsp">
                         <div class="card-body py-1 text-center">
                             <h3 class="h5 mt-1 text_color_white icon_size">
                                 <i class="fas fa-pills"></i>
@@ -102,11 +94,11 @@
                         <div class="d-flex justify-content-between px-grid-gutter py-grid-gutter">
                             <div>
                                 <h3 class="mb-1">Bestsellers</h3>
-                                <a class="fs-md" href="drug_search_name.html">의약품 더보기<i class="ci-arrow-right fs-xs align-middle ms-1"></i></a>
+                                <a class="fs-md" href="<%=request.getContextPath() %>/views/search/searchDrug.jsp">의약품 더보기<i class="ci-arrow-right fs-xs align-middle ms-1"></i></a>
                             </div>
                         </div>
-                        <a class="d-none d-md-block mt-auto" href="shop-grid-ls.html">
-                            <img class="d-block w-75 float-end m-5" src="<%=request.getContextPath() %>/views/img/logo_carrot_original.png" alt="For Women">
+                        <a class="d-none d-md-block mt-auto" href="<%=request.getContextPath() %>/views/search/searchDrug.jsp">
+                            <img class="d-block w-75 float-end m-5" src="<%=request.getContextPath() %>/views/img/logo_carrot_original.png" alt="Logo">
                         </a>
                     </div>
                 </div>
@@ -121,15 +113,17 @@
                                     <div class="container">
                                         <div class="carousel-caption">
                                             <div class="card product-card card-static">
-                                                <a class="card-img-top d-block overflow-hidden" href="grocery-single.html">
-                                                    <img src="img/drug/gnaln.jpg" alt="Product" width="200rem">
+                                                <a class="card-img-top d-block overflow-hidden" href="<%=request.getContextPath() %>/views/search/searchDrug.jsp">
+                                                    <img src="<%=request.getContextPath() %>/views/img/drug/gnaln.jpg" alt="Product" width="200rem">
                                                 </a>
                                                 <div class="card-body py-2">
-                                                    <a class="product-meta d-block fs-xs pb-1" href="#">경동제약(주)</a>
-                                                    <h3 class="product-title fs-lg text-truncate">그날엔코프에스연질캡슐</h3>
+                                                    <a class="product-meta d-block fs-xs pb-1" href="<%=request.getContextPath() %>/views/search/searchDrug.jsp">경동제약(주)</a>
+                                                    <a class="product-meta d-block fs-xs pb-1" href="<%=request.getContextPath() %>/views/search/searchDrug.jsp">
+                                                    	<h3 class="product-title fs-lg text-truncate">그날엔코프에스연질캡슐</h3>
+                                                    </a>
                                                     <div class="product-price"><span class="text-orange">￦3,000</span></div>
                                                 </div>
-                                                <p><a class="btn btn-lg btn-primary" href="#">더알아보기</a></p>
+                                                <p><a class="btn btn-lg btn-primary" href="<%=request.getContextPath() %>/views/search/searchDrug.jsp">더알아보기</a></p>
                                             </div>
                                         </div>
                                     </div>
@@ -139,15 +133,17 @@
                                     <div class="container">
                                         <div class="carousel-caption">
                                             <div class="card product-card card-static">
-                                                <a class="card-img-top d-block overflow-hidden" href="grocery-single.html">
-                                                    <img src="img/drug/doctorbearse.jpg" alt="Product" width="200rem">
+                                                <a class="card-img-top d-block overflow-hidden" href="<%=request.getContextPath() %>/views/search/searchDrug.jsp">
+                                                    <img src="<%=request.getContextPath() %>/views/img/drug/doctorbearse.jpg" alt="Product" width="200rem">
                                                 </a>
                                                 <div class="card-body py-2">
-                                                    <a class="product-meta d-block fs-xs pb-1" href="#">(주)대웅제약</a>
-                                                    <h3 class="product-title fs-lg text-truncate">닥터베아제</h3>
+                                                    <a class="product-meta d-block fs-xs pb-1" href="<%=request.getContextPath() %>/views/search/searchDrug.jsp">(주)대웅제약</a>
+                                                    <a class="product-meta d-block fs-xs pb-1" href="<%=request.getContextPath() %>/views/search/searchDrug.jsp">
+                                                    	<h3 class="product-title fs-lg text-truncate">닥터베아제</h3>
+                                                    </a>
                                                     <div class="product-price"><span class="text-orange">￦3,000</span></div>
                                                 </div>
-                                                <p><a class="btn btn-lg btn-primary" href="#">더알아보기</a></p>
+                                                <p><a class="btn btn-lg btn-primary" href="<%=request.getContextPath() %>/views/search/searchDrug.jsp">더알아보기</a></p>
                                             </div>
                                         </div>
                                     </div>
@@ -157,15 +153,17 @@
                                     <div class="container">
                                         <div class="carousel-caption">
                                             <div class="card product-card card-static">
-                                                <a class="card-img-top d-block overflow-hidden" href="grocery-single.html">
-                                                    <img src="img/drug/tylenol.jpg" alt="Product" width="200rem">
+                                                <a class="card-img-top d-block overflow-hidden" href="<%=request.getContextPath() %>/views/search/searchDrug.jsp">
+                                                    <img src="<%=request.getContextPath() %>/views/img/drug/tylenol.jpg" alt="Product" width="200rem">
                                                 </a>
                                                 <div class="card-body py-2">
-                                                    <a class="product-meta d-block fs-xs pb-1" href="#">(주)한국얀센</a>
-                                                    <h3 class="product-title fs-lg text-truncate">타이레놀</h3>
+                                                    <a class="product-meta d-block fs-xs pb-1" href="<%=request.getContextPath() %>/views/search/searchDrug.jsp">(주)한국얀센</a>
+                                                    <a class="product-meta d-block fs-xs pb-1" href="<%=request.getContextPath() %>/views/search/searchDrug.jsp">
+														 <h3 class="product-title fs-lg text-truncate">타이레놀</h3>
+													</a>
                                                     <div class="product-price"><span class="text-orange">￦3,000</span></div>
                                                 </div>
-                                                <p><a class="btn btn-lg btn-primary" href="#">더알아보기</a></p>
+                                                <p><a class="btn btn-lg btn-primary" href="<%=request.getContextPath() %>/views/search/searchDrug.jsp">더알아보기</a></p>
                                             </div>
                                         </div>
                                     </div>
