@@ -102,11 +102,4 @@ public class DrugShapesDao {
 		return list;
 	}
 
-//	public static void main(String[] args) {
-//		Connection connection = getConnection();
-//		DrugShapesDao DrugShapesDao = new DrugShapesDao(connection);
-//
-//		List<DrugShapes> test = DrugShapesDao.selectDrugColor("흰");
-//		System.out.println(test);
-//	}
 }

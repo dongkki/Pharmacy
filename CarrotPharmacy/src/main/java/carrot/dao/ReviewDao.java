@@ -122,10 +122,4 @@ public class ReviewDao {
 
 	}
 
-	public static void main(String[] args) {
-		Connection connection = getConnection();
-		ReviewDao dao = new ReviewDao();
-		ArrayList<Review> rw = dao.searchReviewList(connection, "C1100134");
-		System.out.println(rw);
-	}
 }

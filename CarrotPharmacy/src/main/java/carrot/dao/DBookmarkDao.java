@@ -17,7 +17,7 @@ public class DBookmarkDao {
 		DBookmark dBookmark = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String query = "SELECT * FROM DBOOK_MARK JOIN USERS USING(USER_ID) WHERE USER_ID LIKE ?";
+		String query = "SELECT * FROM DBOOK_MARK JOIN USERS USING(USER_ID) JOIN DRUG USING(DRUG_CODE) WHERE USER_ID LIKE ?";
 		ArrayList<DBookmark> dBookmarks = new ArrayList<>();
 		
 		try {
@@ -31,6 +31,7 @@ public class DBookmarkDao {
 				dBookmark.setDrug_code(rs.getString("DRUG_CODE"));
 				dBookmark.setDrug_manufactoror(rs.getString("DRUG_MANUFACTOROR"));
 				dBookmark.setDrug_effect(rs.getString("DRUG_EFFECT"));
+				dBookmark.setDrug_image(rs.getString("DRUG_IMAGE"));
 				dBookmarks.add(dBookmark);
 			}
 			
@@ -48,7 +49,7 @@ public class DBookmarkDao {
 	public int addDBookmark(Connection connection, DBookmark dbookmark) {
 		int result = 0;
 		PreparedStatement pstmt = null;
-		String query = "INSERT INTO DBOOK_MARK VALUES (?, ?, ?, ?, ?)";
+		String query = "INSERT INTO DBOOK_MARK VALUES (?, ?, ?, ?, ?, ?)";
 		
 		try {
 			pstmt = connection.prepareStatement(query);
@@ -57,6 +58,7 @@ public class DBookmarkDao {
 			pstmt.setString(3, dbookmark.getDrug_name());
 			pstmt.setString(4, dbookmark.getDrug_manufactoror());
 			pstmt.setString(5, dbookmark.getDrug_effect());
+			pstmt.setString(6, dbookmark.getDrug_image());
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

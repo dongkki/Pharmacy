@@ -270,24 +270,25 @@
 						<% if(loginUser != null) { %>
 							<% for(Drug drug : list){ %>
 							<li class="widget-list-item widget-filter-item">
-								<!-- 북마크에 추가하기 시작 -->
-								<form action="<%=request.getContextPath()%>/views/search/drugBookmark.do">
-									<input type="hidden" name="id" value="<%= loginUser.getUser_id() %>"/>
-									<input type="hidden" name="code" value="<%= drug.getDrugCode() %>"/>
-									<input type="hidden" name="name" value="<%= drug.getDrugName() %>"/>
-									<input type="hidden" name="manufact" value="<%= drug.getDrugManufactoror() %>"/>
-									<input type="hidden" name="effect" value="<%= drug.getDrugEffect() %>"/>
-									<button class="btn-wishlist btn-sm" type="submit" data-bs-toggle="tooltip" data-bs-placement="left"	title="북마크에 추가">
-										<i class=" ci-bookmark"></i>
-									</button>
-								</form>
-								<!-- 북마크에 추가하기 끝 -->
 								<div class="card product-card product-list">
 									<div class="d-sm-flex align-items-center">
-										<button type="button" class="product-list-thumb" id="drug<%= drug.getDrugName() %>"> 
-											<img src="<%=request.getContextPath() %>/views/img/drug/hylKorea/<%= drug.getDrugImage() %>" alt="Product">
-										</button>
+										<a type="button" class="product-list-thumb" id="drug<%= drug.getDrugName() %>"> 
+											<img src="<%=request.getContextPath() %>/views/img/drug/<%= drug.getDrugImage() %>" alt="Product">
+										</a>
 										<div class="card-body py-2">
+											<!-- 북마크에 추가하기 시작 -->
+											<form action="<%=request.getContextPath()%>/views/search/drugBookmark.do" style=" float: right;">
+												<input type="hidden" name="id" value="<%= loginUser.getUser_id() %>"/>
+												<input type="hidden" name="code" value="<%= drug.getDrugCode() %>"/>
+												<input type="hidden" name="name" value="<%= drug.getDrugName() %>"/>
+												<input type="hidden" name="manufact" value="<%= drug.getDrugManufactoror() %>"/>
+												<input type="hidden" name="effect" value="<%= drug.getDrugEffect() %>"/>
+												<input type="hidden" name="image" value="<%= drug.getDrugImage() %>"/>
+												<button class="btn-wishlist btn-sm" type="submit" data-bs-toggle="tooltip" data-bs-placement="left"	title="북마크에 추가">
+													<i class=" ci-bookmark"></i>
+												</button>
+											</form>
+											<!-- 북마크에 추가하기 끝 -->
 											<a class="product-meta d-block fs-xs pb-1"><%= drug.getDrugManufactoror() %></a>
 											<h3 class="product-title fs-base">
 												<%= drug.getDrugName() %>

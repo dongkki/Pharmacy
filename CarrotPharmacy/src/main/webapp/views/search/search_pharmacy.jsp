@@ -25,7 +25,7 @@
 						<ol
 							class="breadcrumb breadcrumb-light flex-lg-nowrap justify-content-center justify-content-lg-start">
 							<li class="breadcrumb-item"><a class="text-nowrap"
-								href="index.html"><i class="ci-home"></i>Home</a></li>
+								href="<%=request.getContextPath() %>/views/index.jsp"><i class="ci-home"></i>Home</a></li>
 							<li class="breadcrumb-item text-nowrap active"
 								aria-current="page">약국검색</li>
 						</ol>
@@ -230,7 +230,7 @@
 				<div class="widget widget-links widget-filter" >
 					<%if(pham ==null || pham.isEmpty()) {%>
 						<h6 class="h6 text-left mb-4 me-3 ">조회된 게시글이 없습니다.</h6>
-						<h6 class="h6 text-left mb-4 me-3 ">원하시는 의약품을 검색해주세요.</h6>
+						<h6 class="h6 text-left mb-4 me-3 ">원하시는 약국을 검색해주세요.</h6>
 					<%}else{ %>
 						<%for(SearchPham phams : pham){ %>
 						<div class="card product-card product-list mb-4">

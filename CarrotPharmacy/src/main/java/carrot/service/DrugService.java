@@ -36,7 +36,7 @@ public class DrugService {
 		List<Drug> result = dao.selectDrugManu(connection, drugManu);
 		return result;
 	}
-	
+
 	public List<Drug> selectDrugEffect(String effect) {
 		Connection connection = getConnection();
 		List<Drug> result = dao.selectDrugEffect(connection, effect);

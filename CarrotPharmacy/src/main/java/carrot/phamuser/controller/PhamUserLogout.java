@@ -10,23 +10,23 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 @WebServlet("/logoutPham")
-public class PhamUserLogout extends HttpServlet{
+public class PhamUserLogout extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
-		
-		if(session != null) {
+
+		if (session != null) {
 			session.invalidate();
 		}
-		
+
 		resp.sendRedirect(req.getContextPath() + "/views/index.jsp");
 	}
-	
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doGet(req, resp);
 	}
-	
+
 }

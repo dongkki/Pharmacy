@@ -14,19 +14,19 @@ import carrot.service.DrugService;
 import carrot.vo.Drug;
 
 @WebServlet("/views/search/searchDetail.do")
-public class SearchDrugDetail extends HttpServlet{
+public class SearchDrugDetail extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+
 	private DrugService service = new DrugService();
-	
+
 	@SuppressWarnings("unchecked")
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
 		resp.setCharacterEncoding("UTF-8");
-		
+
 		String drugName = req.getParameter("drugName");
-		
+
 		Drug drug = null;
 		JSONObject object = new JSONObject();
 
@@ -43,9 +43,9 @@ public class SearchDrugDetail extends HttpServlet{
 		resp.setContentType("application/json; charset=UTF-8");
 		resp.getWriter().print(object);
 		resp.getWriter().flush();
-		
+
 	}
-	
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doGet(req, resp);

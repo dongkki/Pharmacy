@@ -112,16 +112,5 @@ public class SearchPhamDao {
 		}
 		return pham;
 	}
-	
-//	public static void main(String[] args) {
-//		Connection connection = JDBCTemplate.getConnection();
-//		SearchPhamDao spl = new SearchPhamDao();
-//
-//		ArrayList<SearchPham> test = spl.searchPhamList(connection,"약국", "강남구");
-//		System.out.println(test);
-//		
-//		SearchPham pham = spl.searchPhamByNo(connection, "C1100134");
-//		System.out.println(pham);
-//		
-//	}
+
 }

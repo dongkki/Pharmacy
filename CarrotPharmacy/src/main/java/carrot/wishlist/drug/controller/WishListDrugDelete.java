@@ -11,20 +11,20 @@ import javax.servlet.http.HttpServletResponse;
 import carrot.service.DBookmarkService;
 
 @WebServlet("/views/profile/wishlist_drug_del.do")
-public class WishListDrugDelete extends HttpServlet{
+public class WishListDrugDelete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private DBookmarkService service = new DBookmarkService();
-	
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
 		resp.setCharacterEncoding("UTF-8");
 		try {
 			String drugname = req.getParameter("drugname");
-			
+
 			int result = service.deleteDbookmark(drugname);
-			
+
 			if (result > 0) {
 				req.setAttribute("msg", drugname + "이(가) 삭제되었습니다!");
 			} else {
@@ -36,6 +36,6 @@ public class WishListDrugDelete extends HttpServlet{
 		req.setAttribute("location", "/views/profile/account-profile.jsp");
 
 		req.getRequestDispatcher("/views/common/msg.jsp").forward(req, resp);
-		
+
 	}
 }

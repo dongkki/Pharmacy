@@ -1,8 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>	
+	
+<%
+	Date nowTime = new Date();
+	SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일");
+%>
+	
 <!DOCTYPE html>
-<html lang="ko">
-
 <%@ include file="/views/header.jsp"%>
 
 <div class="bg-orange py-4 shadow-sm">
@@ -23,15 +29,18 @@
 <!-- 뉴스 리스트 -->
 
 <div style="height: 800px">
-	<div class="container offcanvas-body pb-1 mb-md-1 h-100" style="overflow-y: scroll;">
+	<div class="container pb-1 mb-md-1 h-100">
+		<div class=" mb-5 mt-4" >
+			<h4 class="fs-lg"> Today <%= sf.format(nowTime) %></h4>
+			<hr class="mt-3 fw-bolder">
+		</div>
 		<!-- 뉴스 목록1 -->
-		<div class="pt-2 mt-md-2">
+		<div class="offcanvas-body pt-2 md-2" style="height: 41rem;">
 			<div class="masonry-grid" data-columns="3">
 				<article class="masonry-grid-item">
 					<div class="card">
-						<a class="blog-entry-thumb"
-							href="http://www.newsmp.com/news/articleView.html?idxno=219730"><img
-							class="card-img-top" src="<%=request.getContextPath() %>/views/img/news/건강보험심사평가원.jpg" alt="Post"></a>
+						<a class="blog-entry-thumb" href="http://www.newsmp.com/news/articleView.html?idxno=219730">
+						<img class="card-img-top" src="<%=request.getContextPath() %>/views/img/news/건강보험심사평가원.jpg" alt="Post"></a>
 						<div class="card-body">
 							<h2 class="h6 fw-bold">
 								<a
@@ -354,6 +363,9 @@
 				<hr class="mb-4">
 			</div>
 		</div>
+			<hr class="mt-5 fw-bolder">
 	</div>
 </div>
 <%@ include file="/views/footer.jsp"%>
+
+

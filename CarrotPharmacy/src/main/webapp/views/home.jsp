@@ -114,16 +114,16 @@
                                         <div class="carousel-caption">
                                             <div class="card product-card card-static">
                                                 <a class="card-img-top d-block overflow-hidden" href="<%=request.getContextPath() %>/views/search/searchDrug.jsp">
-                                                    <img src="<%=request.getContextPath() %>/views/img/drug/gnaln.jpg" alt="Product" width="200rem">
+                                                    <img src="<%=request.getContextPath() %>/views/img/drug/cyverinetab.jpg" alt="Product" width="200rem">
                                                 </a>
                                                 <div class="card-body py-2">
-                                                    <a class="product-meta d-block fs-xs pb-1" href="<%=request.getContextPath() %>/views/search/searchDrug.jsp">경동제약(주)</a>
-                                                    <a class="product-meta d-block fs-xs pb-1" href="<%=request.getContextPath() %>/views/search/searchDrug.jsp">
-                                                    	<h3 class="product-title fs-lg text-truncate">그날엔코프에스연질캡슐</h3>
+                                                    <a class="product-meta d-block fs-xs pb-1" href="<%=request.getContextPath() %>/views/search/searchDrug.jsp">미래제약(주)</a>
+                                                    <a class="product-meta d-block fs-xs pb-1" href="<%=request.getContextPath() %>/views/search/searchDrug.do?name=싸이베린정">
+                                                    	<h3 class="product-title fs-lg text-truncate">싸이베린정</h3>
                                                     </a>
                                                     <div class="product-price"><span class="text-orange">￦3,000</span></div>
                                                 </div>
-                                                <p><a class="btn btn-lg btn-primary" href="<%=request.getContextPath() %>/views/search/searchDrug.jsp">더알아보기</a></p>
+                                                <p><a class="btn btn-lg btn-primary" href="<%=request.getContextPath() %>/views/search/searchDrug.do?name=싸이베린정">더알아보기</a></p>
                                             </div>
                                         </div>
                                     </div>
@@ -134,16 +134,16 @@
                                         <div class="carousel-caption">
                                             <div class="card product-card card-static">
                                                 <a class="card-img-top d-block overflow-hidden" href="<%=request.getContextPath() %>/views/search/searchDrug.jsp">
-                                                    <img src="<%=request.getContextPath() %>/views/img/drug/doctorbearse.jpg" alt="Product" width="200rem">
+                                                    <img src="<%=request.getContextPath() %>/views/img/drug/hupenjung.jpg" alt="Product" width="200rem">
                                                 </a>
                                                 <div class="card-body py-2">
                                                     <a class="product-meta d-block fs-xs pb-1" href="<%=request.getContextPath() %>/views/search/searchDrug.jsp">(주)대웅제약</a>
-                                                    <a class="product-meta d-block fs-xs pb-1" href="<%=request.getContextPath() %>/views/search/searchDrug.jsp">
-                                                    	<h3 class="product-title fs-lg text-truncate">닥터베아제</h3>
+                                                    <a class="product-meta d-block fs-xs pb-1" href="<%=request.getContextPath() %>/views/search/searchDrug.do?name=휴펜정">
+                                                    	<h3 class="product-title fs-lg text-truncate">휴펜정</h3>
                                                     </a>
                                                     <div class="product-price"><span class="text-orange">￦3,000</span></div>
                                                 </div>
-                                                <p><a class="btn btn-lg btn-primary" href="<%=request.getContextPath() %>/views/search/searchDrug.jsp">더알아보기</a></p>
+                                                <p><a class="btn btn-lg btn-primary" href="<%=request.getContextPath() %>/views/search/searchDrug.do?name=휴펜정">더알아보기</a></p>
                                             </div>
                                         </div>
                                     </div>
@@ -158,12 +158,12 @@
                                                 </a>
                                                 <div class="card-body py-2">
                                                     <a class="product-meta d-block fs-xs pb-1" href="<%=request.getContextPath() %>/views/search/searchDrug.jsp">(주)한국얀센</a>
-                                                    <a class="product-meta d-block fs-xs pb-1" href="<%=request.getContextPath() %>/views/search/searchDrug.jsp">
+                                                    <a class="product-meta d-block fs-xs pb-1" href="<%=request.getContextPath() %>/views/search/searchDrug.do?name=타이레놀8시간이알서방정">
 														 <h3 class="product-title fs-lg text-truncate">타이레놀</h3>
 													</a>
                                                     <div class="product-price"><span class="text-orange">￦3,000</span></div>
                                                 </div>
-                                                <p><a class="btn btn-lg btn-primary" href="<%=request.getContextPath() %>/views/search/searchDrug.jsp">더알아보기</a></p>
+                                                <p><a class="btn btn-lg btn-primary" href="<%=request.getContextPath() %>/views/search/searchDrug.do?name=타이레놀8시간이알서방정">더알아보기</a></p>
                                             </div>
                                         </div>
                                     </div>

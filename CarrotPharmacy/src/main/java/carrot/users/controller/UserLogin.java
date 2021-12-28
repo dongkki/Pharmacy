@@ -27,12 +27,12 @@ public class UserLogin extends HttpServlet{
 		
 		Users loginUser = service.login(id, pw);
 		
-		if (loginUser != null) { // 로그인 성공!!
+		if (loginUser != null) {
 			HttpSession session = req.getSession();
 			session.setAttribute("loginUser", loginUser);
 
-			resp.sendRedirect(req.getContextPath() + "/views/index.jsp"); // 메인 페이지로 이동
-		} else { // 로그인 실패!!
+			resp.sendRedirect(req.getContextPath() + "/views/index.jsp"); 
+		} else { 
 			req.setAttribute("msg", "사용자 아이디나 비밀번호가 맞지 않습니다!");
 			req.setAttribute("location", "/views/index.jsp");
 

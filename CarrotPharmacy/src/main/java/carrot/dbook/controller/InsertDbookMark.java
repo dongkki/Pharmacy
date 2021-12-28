@@ -27,9 +27,10 @@ public class InsertDbookMark extends HttpServlet {
 		String name = req.getParameter("name");
 		String manufact = req.getParameter("manufact");
 		String effect = req.getParameter("effect");
+		String image = req.getParameter("image");
 		System.out.println(id + code + name + manufact + effect);
 
-		DBookmark bookmark = new DBookmark(id, code, name, manufact, effect);
+		DBookmark bookmark = new DBookmark(id, code, name, manufact, effect, image);
 
 		int result = service.addDBookmark(bookmark);
 

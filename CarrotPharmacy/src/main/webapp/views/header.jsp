@@ -76,16 +76,13 @@
                                	</table>
                             <% } else {%>
                                	<table>
-                               		<%-- <tr>
-                               			<td colspan="2"><%=loginUser.getUser_name() %> 님 환영합니다</td>
-                               		</tr> --%>
                                		<tr>
                                			<td>
 			                               	<a class="btn btn-primary btn-shadow mx-2" href="<%=request.getContextPath() %>/views/profile/account-profile.jsp"> 
 			                               	<i class="ci-user-circle me-2"></i><%=loginUser.getUser_name()%> 님</a>
                                			</td>
                                			<td>
-			                               	<a class="btn btn-outline-primary btn-shadow mx-2" href="<%=request.getContextPath() %>/logoutPham">
+			                               	<a class="btn btn-outline-primary btn-shadow mx-2" href="<%=request.getContextPath() %>/logoutUser">
 			                               	<i class="ci-user-circle me-2"></i>Log-out</a>
                                			</td>
                                		</tr>
@@ -102,6 +99,18 @@
                             <li class="nav-item dropdown"><a class="nav-link fs-5 fw-bold" href="<%=request.getContextPath() %>/views/search/searchDrug.jsp">의약품 검색</a></li>
                             <li class="nav-item dropdown"><a class="nav-link fs-5 fw-bold" href="<%=request.getContextPath() %>/views/news/news.jsp">뉴스</a></li>
                             <li class="nav-item dropdown"><a class="nav-link fs-5 fw-bold" href="<%=request.getContextPath() %>/views/news/aboutUs.jsp">About Us</a></li>
+                        </ul>
+                        <% } else if(loginPham != null) {%>
+                        <ul class="navbar-nav ">
+                            <li class="nav-item dropdown"><a class="nav-link fs-5 fw-bold" href="<%=request.getContextPath() %>/views/search//search_pharmacy.jsp">약국 검색</a></li>
+                            <li class="nav-item dropdown"><a class="nav-link fs-5 fw-bold" href="<%=request.getContextPath() %>/views/search/searchDrug.jsp">의약품 검색</a></li>
+                            <li class="nav-item dropdown"><a class="nav-link fs-5 fw-bold" href="<%=request.getContextPath() %>/views/news/news.jsp">뉴스</a></li>
+                            <li class="nav-item dropdown"><a class="nav-link fs-5 fw-bold" href="<%=request.getContextPath() %>/views/news/aboutUs.jsp">About Us</a></li>
+                            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle fs-5 fw-bold" href="<%=request.getContextPath() %>/views/profile/account-profile.jsp" data-bs-toggle="dropdown" data-bs-auto-close="outside">마이페이지</a>
+                                <ul class="dropdown-menu">
+                                    <li class="dropdown"><a class="dropdown-item " href="<%=request.getContextPath() %>/views/profile/account-profile.jsp">내 정보 수정</a></li>
+                                </ul>
+                            </li>
                         </ul>
                         <% } else {%>
                         <ul class="navbar-nav ">

@@ -11,8 +11,8 @@ import java.util.List;
 import carrot.vo.QnA;
 
 public class QnADao {
-	
-	public List<QnA> selectQnaPhamNo(Connection connection,String searchQnaPhamNo){
+
+	public List<QnA> selectQnaPhamNo(Connection connection, String searchQnaPhamNo) {
 		List<QnA> list = new ArrayList<QnA>();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -21,7 +21,7 @@ public class QnADao {
 			String query = "SELECT * FROM QNA JOIN PHARMACY USING(PHAM_NO) WHERE PHAM_NO LIKE ?";
 
 			pstmt = connection.prepareStatement(query);
-			pstmt.setString(1, "%"+searchQnaPhamNo+"%");
+			pstmt.setString(1, "%" + searchQnaPhamNo + "%");
 			rs = pstmt.executeQuery();
 
 			while (rs.next() == true) {
@@ -47,13 +47,11 @@ public class QnADao {
 		return list;
 	}
 
-
-	
-	public int insertQna(Connection connection,QnA qna) {
+	public int insertQna(Connection connection, QnA qna) {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		String query = "INSERT INTO QNA(q_num, pham_no, q_name, q_title, q_contents) VALUES (Q_NUM_SEQ.NEXTVAL,?,?,?,?)";
-		
+
 		try {
 			pstmt = connection.prepareStatement(query);
 			pstmt.setString(1, qna.getPham_no());
@@ -69,7 +67,7 @@ public class QnADao {
 			}
 		}
 		return result;
-		
+
 	}
 
 }
