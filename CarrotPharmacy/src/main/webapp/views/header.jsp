@@ -100,7 +100,7 @@
                             <li class="nav-item dropdown"><a class="nav-link fs-5 fw-bold" href="<%=request.getContextPath() %>/views/news/news.jsp">뉴스</a></li>
                             <li class="nav-item dropdown"><a class="nav-link fs-5 fw-bold" href="<%=request.getContextPath() %>/views/news/aboutUs.jsp">About Us</a></li>
                         </ul>
-                        <% } else if(loginPham != null) {%>
+                        <% } else if((loginPham != null)) {%>
                         <ul class="navbar-nav ">
                             <li class="nav-item dropdown"><a class="nav-link fs-5 fw-bold" href="<%=request.getContextPath() %>/views/search//search_pharmacy.jsp">약국 검색</a></li>
                             <li class="nav-item dropdown"><a class="nav-link fs-5 fw-bold" href="<%=request.getContextPath() %>/views/search/searchDrug.jsp">의약품 검색</a></li>

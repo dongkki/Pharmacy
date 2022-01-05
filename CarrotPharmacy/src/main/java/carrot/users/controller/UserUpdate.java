@@ -47,7 +47,7 @@ public class UserUpdate extends HttpServlet{
 			
 			loginUser = service.fineUserId(loginUser.getUser_id());
 			session.setAttribute("loginUser", loginUser);
-			sendCommonPage("회원정보가 수정되었습니다.", "/views/index.jsp", req, resp);
+			sendCommonPage("회원정보가 수정되었습니다.", "/views/profile/account-profile.jsp", req, resp);
 			
 		} catch (Exception e) {
 			sendCommonPage("잘못된 접근입니다.", "/", req, resp);

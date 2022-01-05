@@ -8,7 +8,7 @@
 	<div class="row">
 		<div
 			class="col-md-5 bg-position-center bg-size-cover bg-secondary order-md-2"
-			style="min-height: 15rem; background-image: url(<%=request.getContextPath() %>/views/img/news/team_illustration.jpg);"></div>
+			style="min-height: 15rem; background-image: url(<%=request.getContextPath() %>/views/img/news/team_illustration2.jpg);"></div>
 		<div class="col-md-7 md-5 py-5 order-md-1">
 			<div class="mx-auto py-lg-5" style="max-width: 35rem;">
 				<h2 class="h3 pb-3">
@@ -20,9 +20,10 @@
 					다 같이 좀 더 건강한 서비스를 꿈꿉니다.
 				</h3>
 				<p class="fs-sm text-muted">
-					사용자의 관점에서 생각해보고, 고객이 사는 튼튼한 집을 만든다는 생각으로 개발합니다.<br>
-					우리는 궁극적으로 사람과 사람이 마음을 나누고 연결되는 행복한 세상을 꿈꿉니다.<br>
-					그리고 그 속에서 개인과 팀의 발전을 위합니다.
+					주변 약국을 찾을 때 정확한 정보 찾기를 원하시죠?<br>
+					우리는 사용자의 관점에서 생각해보고, <br>
+					사용자에게 정확한 약국/의약품 정보 제공을 중점으로 두었습니다.<br>
+					지속적인 커뮤니케이션과 협업을 통해 좋은 서비스를 위해 노력했습니다.
 				</p>
 				<a class="btn btn-warning btn-shadow" href="#bottom">See Our Team</a>
 			</div>

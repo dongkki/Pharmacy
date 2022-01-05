@@ -72,23 +72,24 @@
                         <a class="btn btn-warning2 btn-sm" href="index.html"><i class="ci-sign-out me-2"></i>Sign out</a>
                     </div>
                     <!-- Profile form-->
+                    <% if(loginUser != null){ %>
                     <form name="updateInfo" action="<%= request.getContextPath() %>/updateUser" method="POST">
                         <div class="bg-yellow rounded-3 p-3 mb-3">
-				<h4 class="fw-bold pt-3">내 정보 수정</h4>
+						<h4 class="fw-bold pt-3">내 정보 수정</h4>
                         </div>
                         <div class="row gx-4 gy-3">
                             <div class="col-sm-6">
                                 <label class="form-label" for="account-fn">이름</label>
-						<input class="form-control" type="text" id="name" value="<%=loginUser.getUser_name()%>" required>
+								<input class="form-control" type="text" name="name" value="<%=loginUser.getUser_name()%>" required>
                             </div>
                             <div class="col-sm-6">
                                 <label class="form-label" for="account-phone">전화번호</label>
-						<input class="form-control" type="text" id="tel"value="<%=loginUser.getUser_tell()%>" required>
+								<input class="form-control" type="text" name="tel"value="<%=loginUser.getUser_tell()%>" required>
                             </div>
                             <div class="col-sm-6">
                                 <label class="form-label" for="account-pass">새 비밀번호</label>
                                 <div class="password-toggle">
-							<input class="form-control" type="password" id="pw" value="<%=loginUser.getUser_pw()%>" required>
+									<input class="form-control" type="password" id="pw" name="pw" value="<%=loginUser.getUser_pw()%>" required>
                                     <label class="password-toggle-btn" aria-label="Show/hide password">
                                         <input class="password-toggle-check" type="checkbox">
                                         <span class="password-toggle-indicator"></span>
@@ -98,7 +99,7 @@
                             <div class="col-sm-6">
                                 <label class="form-label" for="account-confirm-pass">비밀번호 확인</label>
                                 <div class="password-toggle">
-							<input class="form-control" type="password" id="pw2" value="<%=loginUser.getUser_pw()%>" required>
+									<input class="form-control" type="password" id="pw2" name="pw2" value="<%=loginUser.getUser_pw()%>" required>
                                     <label class="password-toggle-btn" aria-label="Show/hide password">
                                         <input class="password-toggle-check" type="checkbox"><span
                                             class="password-toggle-indicator"></span>
@@ -114,6 +115,50 @@
                             </div>
                         </div>
                     </form>
+                    <% } else {%>
+                    <form name="updateInfo" action="<%= request.getContextPath() %>/updatePhamUser" method="POST">
+                        <div class="bg-yellow rounded-3 p-3 mb-3">
+						<h4 class="fw-bold pt-3">내 정보 수정</h4>
+                        </div>
+                        <div class="row gx-4 gy-3">
+                            <div class="col-sm-6">
+                                <label class="form-label" for="account-fn">아이디</label>
+								<input class="form-control" type="text" name="id" value="<%=loginPham.getPham_id()%>" required>
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="form-label" for="account-phone">기관 ID</label>
+								<input class="form-control" type="text" name="phamId"value="<%=loginPham.getPham_no()%>" required>
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="form-label" for="account-pass">새 비밀번호</label>
+                                <div class="password-toggle">
+									<input class="form-control" type="password" name="pw3" value="<%=loginPham.getPham_user_pw()%>" required>
+                                    <label class="password-toggle-btn" aria-label="Show/hide password">
+                                        <input class="password-toggle-check" type="checkbox">
+                                        <span class="password-toggle-indicator"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="form-label" for="account-confirm-pass">비밀번호 확인</label>
+                                <div class="password-toggle">
+									<input class="form-control" type="password" name="pw4" value="<%=loginPham.getPham_user_pw()%>" required>
+                                    <label class="password-toggle-btn" aria-label="Show/hide password">
+                                        <input class="password-toggle-check" type="checkbox"><span
+                                            class="password-toggle-indicator"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <hr class="mt-2 mb-3">
+                                <div class="d-flex flex-wrap justify-content-between align-items-center">
+                                    <div class="form-check"> </div>
+                                    <input class="btn btn-primary mt-3 mt-sm-0" id="updateSubmit2" type="submit" value="변경">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <% } %>
                 </section>
               </div>
             </div>
@@ -135,7 +180,26 @@
 						}		
 					});
 				});
-	</script>
+			</script>
+			
+            <script>
+				$(document).ready(() => {
+					$("#updateSubmit2").on("click", (e) => {
+						let pass1 = $("#pw3").val();			
+						let pass2 = $("#pw4").val();
+						
+						if(pass1.trim() != pass2.trim()) {
+							alert("비밀번호가 일치하지 않습니다.");
+							
+							$("#pw3").val("");
+							$("#pw4").val("");
+							$("#pw3").focus();
+							
+							return false;
+						}		
+					});
+				});
+			</script>
             
                 
 <%@ include file="/views/footer.jsp"%>

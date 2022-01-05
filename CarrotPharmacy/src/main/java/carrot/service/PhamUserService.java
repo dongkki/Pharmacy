@@ -45,6 +45,22 @@ public class PhamUserService {
 		return result;
 	}
 
+	public int modifyUser(String id, String phamId, String pw) {
+		int result = 0;
+		Connection connection = getConnection();
+
+		result = dao.modifyUser(connection, id, phamId, pw);
+
+		if (result > 0) {
+			commit(connection);
+		} else {
+			rollback(connection);
+		}
+		close(connection);
+
+		return result;
+	}
+	
 	public boolean isDuplicated(String no) {
 		Connection conn = getConnection();
 		PhamUser phamNo = dao.finePhamNo(conn, no);

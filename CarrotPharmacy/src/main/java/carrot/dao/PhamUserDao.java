@@ -5,6 +5,7 @@ import static carrot.common.jdbc.JDBCTemplate.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import carrot.vo.PhamUser;
 
@@ -81,4 +82,26 @@ public class PhamUserDao {
 		return result;
 	}
 
+	public int modifyUser(Connection connection, String id, String phamId, String pw) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String query = null;
+		try {
+			query = "UPDATE PHAM_USER SET PHAM_USER_ID=?, PHAM_NO=?, PHAM_USER_PW=? WHERE PHAM_USER_ID=?";
+			pstmt = connection.prepareStatement(query);
+			
+			pstmt.setString(1, id);
+			pstmt.setString(2, phamId);
+			pstmt.setString(3, pw);
+			pstmt.setString(4, id);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
 }

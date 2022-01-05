@@ -34,7 +34,8 @@
                                 </div>
                                 <div class="ps-md-3">
                                     <h3 class="fs-base mb-0">
-                                    	<%=loginUser.getUser_name() %>
+                                    	<%=loginUser.getUser_name() %><br>
+                                    	<%=loginUser.getUser_id() %>
 									</h3>
                                 </div>
                             </div><a class="btn btn-primary d-lg-none mb-2 mt-3 mt-md-0" href="#account-menu" data-bs-toggle="collapse" aria-expanded="false"><i class="ci-menu me-2"></i>메뉴</a>

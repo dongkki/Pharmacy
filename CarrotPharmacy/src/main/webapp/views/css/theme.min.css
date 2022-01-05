@@ -7,6 +7,7 @@
 
 @import "https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap";
 :root {
+  --main-beige-rgb: rgb(247, 246, 231, 0.3);
   --main-yellow: #f7f6e7;
   --main-orange: #f8b06d;
   --main-navy: #314e52;
@@ -5597,7 +5598,6 @@ fieldset:disabled .btn {
 .alert {
   position: relative;
   padding: 0.75rem 1.125rem;
-  margin-bottom: 1rem;
   border: 1px solid transparent;
   border-radius: 0.4375rem;
 }
@@ -19688,6 +19688,10 @@ html:not([dir="rtl"]) .range-slider-ui.noUi-horizontal .noUi-handle {
 .bg-yellow {
   --bs-bg-opacity: 1;
   background-color: var(--main-yellow) !important;
+}
+.bg-beige {
+  --bs-bg-opacity: 1;
+  background-color: rgb(247, 246, 231, 0.3) !important;
 }
 
 .mt-sm-n4-5 {
